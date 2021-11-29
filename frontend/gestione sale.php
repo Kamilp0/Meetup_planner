@@ -59,7 +59,7 @@ require "../common/head.html";
                                         <td>-</td>
                                         <td>10</td>
                                         <td>-</td>
-                                        <td><button type="button" class="btn btn-primary btn-sm">Modifica</button></td>
+                                        <td><a href="modifica%20sala.php" type="button" class="btn btn-primary btn-sm">Modifica</a></td>
                                     </tr>
                                     </tbody>
                                 </table>
