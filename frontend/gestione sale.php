@@ -25,7 +25,7 @@ require "../common/head.html";
                 <main>
                     <div class="conteiner-fluid pt-5 px-5" >
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="../index.html">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="../index.php">Dashboard</a></li>
                             <li class="breadcrumb-item active">Tables</li>
                         </ol>
                         <div class="row justify-content-start mb-4">
