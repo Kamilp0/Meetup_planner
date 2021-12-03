@@ -27,19 +27,32 @@ require "../common/navbar sopra.php";
             <div class="conteiner-fluid pt-5 px-5">
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item"><a href="../index.html">Dashboard</a></li>
-                    <li class="breadcrumb-item"><a href="gestione sale.php">Gestione aule</a></li>
-                    <li class="breadcrumb-item active">Modifica sala</li>
+                    <li class="breadcrumb-item"><a href="gestione utenti.php">Gestione utenti</a></li>
+                    <li class="breadcrumb-item active">Modifica utente</li>
                 </ol>
                 <div class="row justify-content-start mb-4">
                     <div class="col-4">
-                        <h1 class="mt-4">Modifica sala</h1>
+                        <h1 class="mt-4">Modifica utente</h1>
                     </div>
                 </div>
                 <form>
-                    <div class="row mb-3">
-                        <label for="nome-sala" class="col-sm-2 col-form-label" value="Prova nome">Nome sala:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" value="Prova nome">
+                    <div class="row">
+                        <div class="col d-flex flex-column justify-content-evenly">
+                            <div class="d-flex flex-row">
+                                <label for="nome" class="col-sm-2 col-form-label">Nome:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" value="Basilio">
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row justify-content-evenly">
+                                <label for="Cognome" class="col-sm-2 col-form-label" >Cognome:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" value="Russo">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <img src="../images/utente_default.jpg" width="250" class="rounded mx-auto d-block" alt="...">
                         </div>
                     </div>
                     <fieldset class="row mb-3">
@@ -71,33 +84,47 @@ require "../common/navbar sopra.php";
                             </div>
                         </div>
                     </fieldset>
-                    <div class="row mb-3">
-                        <label for="capienza-sala" class="col-sm-2 col-form-label">Capienza:</label>
-                        <div class="col-sm-10">
-                            <input type="number" class="form-control" value="50">
-                        </div>
-                    </div>
                     <fieldset class="row mb-3">
-                        <legend class="col-form-label col-sm-2 pt-0">Strumentazione:</legend>
+                        <legend class="col-form-label col-sm-2 pt-0">Ruolo:</legend>
                         <div class="col-sm-10">
-                            <div class="input-group mb-3 input-group-sm">
-                                <span class="input-group-text">Tavoli</span>
-                                <input type="number" class="form-control" value="5">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="ruolo" id="gridRadios1" value="direttore" checked>
+                                <label class="form-check-label" for="ruolo">
+                                    Direttore
+                                </label>
                             </div>
-                            <div class="input-group mb-3 input-group-sm">
-                                <span class="input-group-text">Lavagne</span>
-                                <input type="number" class="form-control" value="0">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="ruolo" id="gridRadios1" value="funzionario">
+                                <label class="form-check-label" for="ruolo">
+                                    Funzionario
+                                </label>
                             </div>
-                            <div class="input-group mb-3 input-group-sm">
-                                <span class="input-group-text">Proiettori</span>
-                                <input type="number" class="form-control" value="10">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="ruolo" id="gridRadios1" value="capo-settore">
+                                <label class="form-check-label" for="ruolo">
+                                    Capo settore
+                                </label>
                             </div>
-                            <div class="input-group mb-3 input-group-sm">
-                                <span class="input-group-text">Computer</span>
-                                <input type="number" class="form-control" value="0">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="ruolo" id="gridRadios1" value="manutentore">
+                                <label class="form-check-label" for="ruolo">
+                                    Manutentore
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="ruolo" id="gridRadios1" value="impiegato">
+                                <label class="form-check-label" for="ruolo">
+                                    Impiegato
+                                </label>
                             </div>
                         </div>
                     </fieldset>
+                    <div class="alert alert-dark" role="alert">
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" id="utenteautorizzato" type="checkbox" checked />
+                            <label class="form-check-label" for="utenteautorizzato">Autorizza l'utente a organizzare riunioni</label>
+                        </div>
+                    </div>
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-aule">
                         SALVA MODIFICHE
                     </button>

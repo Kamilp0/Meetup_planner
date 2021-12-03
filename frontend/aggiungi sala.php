@@ -26,7 +26,7 @@ require "../common/head.html";
             <div class="conteiner-fluid pt-5 px-5">
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item"><a href="../index.html">Dashboard</a></li>
-                    <li class="breadcrumb-item"><a href="gestione sale.php">Gestione sale</a></li>
+                    <li class="breadcrumb-item"><a href="gestione sale.php">Gestione aule</a></li>
                     <li class="breadcrumb-item active">Aggiungi sala</li>
                 </ol>
                 <div class="row justify-content-start mb-4">
@@ -97,10 +97,10 @@ require "../common/head.html";
                             </div>
                         </div>
                     </fieldset>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-aule">
                         AGGIUNGI
                     </button>
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="modal-aule" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">

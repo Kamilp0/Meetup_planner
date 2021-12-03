@@ -23,10 +23,10 @@ require "../common/head.html";
 
             <div id="layoutSidenav_content">
                 <main>
-                    <div class="conteiner-fluid pt-5 px-5" >
+                    <div class="container-fluid pt-5 px-5" >
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="../index.html">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Tables</li>
+                            <li class="breadcrumb-item"><a href="../index.html">Homepage</a></li>
+                            <li class="breadcrumb-item active">Gestione aule</li>
                         </ol>
                         <div class="row justify-content-start mb-4">
                             <div class="col-4">
