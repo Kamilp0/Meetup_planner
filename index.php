@@ -4,32 +4,33 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Gestione sale</title>
+    <title>Meetup Planner</title>
     <link href="./css/styles.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/0a8f02362e.js" crossorigin="anonymous"></script>
     <style>
-        .home_content {
-            background-color: red;
-            position: relative;
+        #home_content {
+            position: absolute;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             min-width: 0;
             flex-grow: 1;
             min-height: calc(100vh - 56px);
-            margin-left: 0
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
         }
     </style>
 </head>
 <body class="sb-nav-fixed">
 <!--TOP NAVBAR-->
-
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <!-- Navbar Brand-->
     <a class="navbar-brand ps-3" href="index.php">Meetup Planner</a>
     <!-- Sidebar Toggle-->
-    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+<!--    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>-->
     <!-- Navbar Search-->
     <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
         <div class="input-group">
@@ -58,50 +59,76 @@
 //
 //    ?>
 
-        <div class="home_content pt-5">
-                <!--            CONTENT-->
-                <div class="row">
-                    <div class="col-4">
-                        <div class="p-5" style="width: 21rem;">
-                            <img src="assets/img/error-404-monochrome.svg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Calendario</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="./frontend/login.html" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="p-5" style="width: 21rem;">
-                            <img src="assets/img/error-404-monochrome.svg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="p-5" style="width: 21rem;">
-                            <img src="assets/img/error-404-monochrome.svg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
+<div id="home_content">
+    <main>
+        <div class="container-fluid pt-5 px-5">
+            <!--            CONTENT-->
+            <div class="row">
+                <div class="col-4">
+                    <div class="p-5" style="width: 21rem;">
+                        <img style="height: 250px; width: 250px" src="assets/img/envelope-regular.svg" class="card-img-top" alt="Responsive image">
+                        <div class="card-body">
+                            <h5 class="card-title">Inviti</h5>
+                            <p class="card-text">Visualizza tutti gli eventi a cui sei stato invitato.</p>
+                            <a href="./frontend/login.html" class="btn btn-primary">Vedi inviti</a>
                         </div>
                     </div>
                 </div>
-            <!--            FOOTER-->
-            <?PHP
-            require "./common/footer.html"
+                <div class="col-sm-4">
+                    <div class="p-5" style="width: 21rem;">
+                        <img style="width: 250px; height: 250px" src="assets/img/calendar-check-regular.svg" class="card-img-top" alt="Responsive image">
+                        <div class="card-body">
+                            <h5 class="card-title">Iscrizioni confermate</h5>
+                            <p class="card-text">Visualizza tutti gli eventi ai quali hai confermato la tua partecipazione.</p>
+                            <a href="#" class="btn btn-primary">Vedi riunioni confermate</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="p-5" style="width: 21rem;">
+                        <img style="width: 250px; height: 250px;" src="assets/img/chalkboard-teacher-solid.svg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Le mie riunioni</h5>
+                            <p class="card-text">Gestici le tue riunioni. Organizza, modifica o cancella una riunione.</p>
+                            <a href="#" class="btn btn-primary">Vai alle riunioni</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <div class="p-5" style="width: 21rem;">
+                        <img style="width: 250px; height: 250px" src="assets/img/users-solid.svg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Gestisci utenti</h5>
+                            <p class="card-text">Gestisci i dati utente del personale dell'azienda.</p>
+                            <a href="./frontend/login.html" class="btn btn-primary">Vai agli utenti</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="p-5" style="width: 21rem;">
+                        <img style="height: 250px; width: 250px" src="assets/img/building-regular.svg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Gestisci sale</h5>
+                            <p class="card-text">Inserisci nel sistema nuove sale adibite a sale riunioni, o rimuovi dal sistema quelle che non possono più essere utilizzate. </p>
+                            <a href="#" class="btn btn-primary">Vai alle sale</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </main>
+    <?PHP
+    require "./common/footer.html"
 
-            ?>
-        </div>
+    ?>
+</div>
+
+
 <!--    </div>-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <!--    <script src="./js/scripts.js"></script>-->
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-    <script src="./js/datatables-simple-demo.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+<script src="./js/datatables-simple-demo.js"></script>
 </body>
 </html>
