@@ -25,7 +25,7 @@ require "../common/navbar sopra.php";
         <main>
             <div class="container-fluid pt-5 px-5">
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item"><a href="../index.html">Homepage</a></li>
+                    <li class="breadcrumb-item"><a href="../index.php">Homepage</a></li>
                     <li class="breadcrumb-item"><a href="le%20mie%20riunioni.php">Le mie riunioni</a></li>
                     <li class="breadcrumb-item active">Nuova riunione</li>
                 </ol>

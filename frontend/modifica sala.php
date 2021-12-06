@@ -26,7 +26,7 @@ require "../common/navbar sopra.php";
         <main>
             <div class="conteiner-fluid pt-5 px-5">
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item"><a href="../index.html">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="../index.php">Homepage</a></li>
                     <li class="breadcrumb-item"><a href="gestione sale.php">Gestione aule</a></li>
                     <li class="breadcrumb-item active">Modifica sala</li>
                 </ol>
