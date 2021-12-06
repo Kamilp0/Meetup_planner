@@ -43,9 +43,9 @@
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="">Profilo</a></li>
+                <li><a class="dropdown-item" href="./frontend/profilo%20utente.php">Profilo</a></li>
                 <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="">Logout</a></li>
+                <li><a class="dropdown-item" href="./frontend/login.html">Logout</a></li>
             </ul>
         </li>
     </ul>
@@ -70,7 +70,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Inviti</h5>
                             <p class="card-text">Visualizza tutti gli eventi a cui sei stato invitato.</p>
-                            <a href="./frontend/login.html" class="btn btn-primary">Vedi inviti</a>
+                            <a href="./frontend/inviti.php" class="btn btn-primary">Vedi inviti</a>
                         </div>
                     </div>
                 </div>
@@ -80,7 +80,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Iscrizioni confermate</h5>
                             <p class="card-text">Visualizza tutti gli eventi ai quali hai confermato la tua partecipazione.</p>
-                            <a href="#" class="btn btn-primary">Vedi riunioni confermate</a>
+                            <a href="./frontend/iscrizioni%20confermate.php" class="btn btn-primary">Vedi riunioni confermate</a>
                         </div>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Le mie riunioni</h5>
                             <p class="card-text">Gestici le tue riunioni. Organizza, modifica o cancella una riunione.</p>
-                            <a href="#" class="btn btn-primary">Vai alle riunioni</a>
+                            <a href="./frontend/le%20mie%20riunioni.php" class="btn btn-primary">Vai alle riunioni</a>
                         </div>
                     </div>
                 </div>
@@ -102,7 +102,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Gestisci utenti</h5>
                             <p class="card-text">Gestisci i dati utente del personale dell'azienda.</p>
-                            <a href="./frontend/login.html" class="btn btn-primary">Vai agli utenti</a>
+                            <a href="./frontend/gestione%20utenti.php" class="btn btn-primary">Vai agli utenti</a>
                         </div>
                     </div>
                 </div>
@@ -112,7 +112,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Gestisci sale</h5>
                             <p class="card-text">Inserisci nel sistema nuove sale adibite a sale riunioni, o rimuovi dal sistema quelle che non possono più essere utilizzate. </p>
-                            <a href="#" class="btn btn-primary">Vai alle sale</a>
+                            <a href="./frontend/gestione%20sale.php" class="btn btn-primary">Vai alle sale</a>
                         </div>
                     </div>
                 </div>

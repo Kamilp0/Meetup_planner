@@ -14,17 +14,17 @@
                 </a>
                 <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="../frontend/inviti.php">
                             <div class="sb-nav-link-icon"><i class="far fa-envelope"></i></div>
                             Inviti
                         </a>
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="../frontend/iscrizioni%20confermate.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-calendar-check"></i></div>
                             Iscrizioni confermate
                         </a>
                     </nav>
                 </div>
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="../frontend/le%20mie%20riunioni.php">
                     <div class="sb-nav-link-icon"><i class="fas fa-chalkboard-teacher"></i></div>
                     Le mie riunioni
                 </a>
@@ -35,7 +35,7 @@
                 </a>
                 <a class="nav-link" href="../frontend/gestione%20sale.php">
                     <div class="sb-nav-link-icon"><i class="far fa-building"></i></div>
-                    Gestione aule
+                    Gestione sale
                 </a>
             </div>
         </div>
