@@ -27,7 +27,7 @@ require "../common/navbar sopra.php";
             <div class="conteiner-fluid pt-5 px-5">
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item"><a href="../index.html">Homepage</a></li>
-                    <!--                    <li class="breadcrumb-item"><a href="gestione utenti.php">Gestione utenti</a></li>-->
+<!--                    <li class="breadcrumb-item"><a href="gestione utenti.php">Gestione utenti</a></li>-->
                     <li class="breadcrumb-item active">Profilo</li>
                 </ol>
                 <div class="row justify-content-start mb-4">
@@ -41,29 +41,29 @@ require "../common/navbar sopra.php";
                             <div class="p-2 d-flex flex-row">
                                 <label for="nome" class="col-sm-2 col-form-label">Nome:</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" value="Basilio">
+                                    <input type="text" class="form-control" value="Basilio" readonly>
                                 </div>
                             </div>
                             <div class="p-2 d-flex flex-row justify-content-evenly">
                                 <label for="Cognome" class="col-sm-2 col-form-label" >Cognome:</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" value="Russo">
+                                    <input type="text" class="form-control" value="Russo" readonly>
                                 </div>
                             </div>
                             <div class="p-2 d-flex flex-row">
                                 <label for="nome" class="col-sm-2 col-form-label">Email:</label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" value="basilio.russo@email.com">
+                                    <input type="email" class="form-control" value="basilio.russo@email.com" readonly>
                                 </div>
                             </div>
                             <div class="p-2 d-flex flex-row justify-content-evenly">
                                 <label for="Cognome" class="col-sm-2 col-form-label" >Password:</label>
                                 <div class="col-sm-10">
-                                    <input type="password" class="form-control" value="password">
+                                    <input type="password" class="form-control" value="password" readonly>
                                 </div>
                             </div>
                             <div class="p-2 ">
-                                <a href="profilo%20utente.php" class="btn btn-primary" role="button">Salva</a>
+                                <a href="modifica%20utente.php" class="btn btn-primary" role="button">Modifica profilo</a>
                             </div>
                         </div>
                         <div class="col">
