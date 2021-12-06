@@ -29,13 +29,13 @@ require "../common/navbar sopra.php";
                 </ol>
                 <div class="row justify-content-start mb-4">
                     <div class="col-4">
-                        <h1 class="mt-4">Le mie riuninoi</h1>
+                        <h1 class="mt-4">Le mie riunioni</h1>
                     </div>
                     <div class="col-4">
-                        <a href="aggiungi%20utente.php" type="button" class="btn btn-primary btn-lg" >Nuova riunione</a>
+                        <a href="nuova%20riunione.php" type="button" class="btn btn-primary btn-lg" >Nuova riunione</a>
                     </div>
                     <div class="col-4">
-                        <h4  class="mt-4"><a href="#">Riunioni già svolte</a></h4>
+                        <h4  class="mt-4"><a href="#riunionisvolte">Riunioni già svolte</a></h4>
                     </div>
                 </div>
                 <div class="card mb-4">
@@ -58,19 +58,19 @@ require "../common/navbar sopra.php";
                                 <td>Alfa, Galileo</td>
                                 <td>2 ore</td>
                                 <td>Bilancio mesi di novembre e dicembre</td>
-                                <td><a href="#">visualizza la lista degli invitati</a></td>
+                                <td><a href="lista%20invitati.php">visualizza la lista degli invitati</a></td>
                                 <td><a href="modifica%20utente.php" type="button" class="btn btn-primary btn-sm">Modifica informazioni</a></td>
                             </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
-                <div class="row justify-content-start mb-4">
+                <div id="riunionisvolte" class="row justify-content-start mb-4">
                     <div class="col-4">
                         <h1 class="mt-4">Riunioni svolte</h1>
                     </div>
                     <div class="col-4">
-                        <h4  class="mt-4"><a href="#">Torna su</a></h4>
+                        <h4  class="mt-4"><a href="#top">Torna su</a></h4>
                     </div>
                 </div>
                 <div class="card mb-4">
@@ -93,7 +93,7 @@ require "../common/navbar sopra.php";
                                 <td>Beta, Newton</td>
                                 <td>4 ore</td>
                                 <td>Corso di aggiornamento per manutentori</td>
-                                <td><a href="#">visualizza la lista degli invitati</a></td>
+                                <td><a href="lista%20invitati.php">visualizza la lista degli invitati</a></td>
                             </tr>
                             </tbody>
                         </table>
