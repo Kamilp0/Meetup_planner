@@ -24,7 +24,7 @@
                         </a>
                     </nav>
                 </div>
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="../frontend/le%20mie%20riunioni.php">
                     <div class="sb-nav-link-icon"><i class="fas fa-chalkboard-teacher"></i></div>
                     Le mie riunioni
                 </a>
@@ -35,7 +35,7 @@
                 </a>
                 <a class="nav-link" href="../frontend/gestione%20sale.php">
                     <div class="sb-nav-link-icon"><i class="far fa-building"></i></div>
-                    Gestione aule
+                    Gestione sale
                 </a>
             </div>
         </div>

@@ -35,93 +35,14 @@ require "../common/navbar sopra.php";
                         <h1 class="mt-4">Modifica sala</h1>
                     </div>
                 </div>
-                <form>
-                    <div class="row mb-3">
-                        <label for="nome-sala" class="col-sm-2 col-form-label" value="Prova nome">Nome sala:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" value="Prova nome">
-                        </div>
-                    </div>
-                    <fieldset class="row mb-3">
-                        <legend class="col-form-label col-sm-2 pt-0">Dipartimento:</legend>
-                        <div class="col-sm-10">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="copernico" >
-                                <label class="form-check-label" for="gridRadios1">
-                                    Copernico
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="galileo" checked>
-                                <label class="form-check-label" for="gridRadios1">
-                                    Galileo
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="keplero">
-                                <label class="form-check-label" for="gridRadios1">
-                                    Keplero
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="newton">
-                                <label class="form-check-label" for="gridRadios1">
-                                    Newton
-                                </label>
-                            </div>
-                        </div>
-                    </fieldset>
-                    <div class="row mb-3">
-                        <label for="capienza-sala" class="col-sm-2 col-form-label">Capienza:</label>
-                        <div class="col-sm-10">
-                            <input type="number" class="form-control" value="50">
-                        </div>
-                    </div>
-                    <fieldset class="row mb-3">
-                        <legend class="col-form-label col-sm-2 pt-0">Strumentazione:</legend>
-                        <div class="col-sm-10">
-                            <div class="input-group mb-3 input-group-sm">
-                                <span class="input-group-text">Tavoli</span>
-                                <input type="number" class="form-control" value="5">
-                            </div>
-                            <div class="input-group mb-3 input-group-sm">
-                                <span class="input-group-text">Lavagne</span>
-                                <input type="number" class="form-control" value="0">
-                            </div>
-                            <div class="input-group mb-3 input-group-sm">
-                                <span class="input-group-text">Proiettori</span>
-                                <input type="number" class="form-control" value="10">
-                            </div>
-                            <div class="input-group mb-3 input-group-sm">
-                                <span class="input-group-text">Computer</span>
-                                <input type="number" class="form-control" value="0">
-                            </div>
-                        </div>
-                    </fieldset>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-aule">
-                        SALVA MODIFICHE
-                    </button>
-                    <div class="modal fade" id="modal-aule" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Autenticazione</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" id="inputPassword" type="password" placeholder="Conferma Password" />
-                                        <label for="inputPassword">Conferma password</label>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
-                                    <button type="button" class="btn btn-primary">Salva modifiche</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+
+                <?PHP
+
+                $nome = $_GET['sala'];
+                $dip = $_GET['dip'];
+                require "../backend/modificasala_back.php";
+
+                ?>
 
             </div>
         </main>

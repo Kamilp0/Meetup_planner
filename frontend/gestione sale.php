@@ -52,14 +52,13 @@ require "../common/head.html";
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        <th scope="row">Prova nome</th>
-                                        <th scope="row" class="tooltipkamil" messaggio-tooltip="via Monterosa 1, Milano"> Galileo </th>
-                                        <td>50</td>
-                                        <td>5</td>
-                                        <td>-</td>
-                                        <td>10</td>
-                                        <td>-</td>
-                                        <td><a href="modifica%20sala.php" type="button" class="btn btn-primary btn-sm">Modifica</a></td>
+
+                                        <?PHP
+
+                                        require "../backend/listasale_back.php";
+
+                                        ?>
+
                                     </tr>
                                     </tbody>
                                 </table>

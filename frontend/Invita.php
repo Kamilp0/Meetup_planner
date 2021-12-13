@@ -24,7 +24,7 @@ require "../common/navbar sopra.php";
     <div id="layoutSidenav_content">
         <main>
             <div>
-                elenco dei dipendenti con un checkbox di fianco 'per selezionare chi invitare (anche opzione "seleziona/deselezona tutto). barra di ricerca per cercare un dipendente singolo o filtrare per ruolo e/o dipartimento.
+                elenco dei dipendenti con un checkbox di fianco per selezionare chi invitare (anche opzione seleziona/deselezona tutto). barra di ricerca per cercare un dipendente singolo o filtrare per ruolo e/o dipartimento.
             </div>
         </main>
         <?PHP

@@ -34,36 +34,36 @@ require "../common/head.html";
                         <h1 class="mt-4">Aggiungi sala</h1>
                     </div>
                 </div>
-                <form>
+                <form action="http://localhost/pweb2021/backend/nuovasala_back.php" method="post">
                     <div class="row mb-3">
-                        <label for="nome-sala" class="col-sm-2 col-form-label">Nome sala:</label>
+                        <label class="col-sm-2 col-form-label">Nome sala:</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control">
+                            <input type="text" name="nome" class="form-control">
                         </div>
                     </div>
                     <fieldset class="row mb-3">
                         <legend class="col-form-label col-sm-2 pt-0">Dipartimento:</legend>
                         <div class="col-sm-10">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="copernico" >
+                                <input class="form-check-input" type="radio" name="dip" value="Copernico" >
                                 <label class="form-check-label" for="gridRadios1">
                                     Copernico
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="galileo">
+                                <input class="form-check-input" type="radio" name="dip" value="Galileo">
                                 <label class="form-check-label" for="gridRadios1">
                                     Galileo
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="keplero">
+                                <input class="form-check-input" type="radio" name="dip" value="Keplero">
                                 <label class="form-check-label" for="gridRadios1">
                                     Keplero
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="newton">
+                                <input class="form-check-input" type="radio" name="dip" value="Newton">
                                 <label class="form-check-label" for="gridRadios1">
                                     Newton
                                 </label>
@@ -71,9 +71,9 @@ require "../common/head.html";
                         </div>
                     </fieldset>
                     <div class="row mb-3">
-                        <label for="capienza-sala" class="col-sm-2 col-form-label">Capienza:</label>
+                        <label class="col-sm-2 col-form-label">Capienza:</label>
                         <div class="col-sm-10">
-                            <input type="number" class="form-control">
+                            <input type="number" name="capienza" class="form-control">
                         </div>
                     </div>
                     <fieldset class="row mb-3">
@@ -81,19 +81,19 @@ require "../common/head.html";
                         <div class="col-sm-10">
                             <div class="input-group mb-3 input-group-sm">
                                 <span class="input-group-text">Tavoli</span>
-                                <input type="numner" class="form-control">
+                                <input type="numner" name="tavoli" class="form-control">
                             </div>
                             <div class="input-group mb-3 input-group-sm">
                                 <span class="input-group-text">Lavagne</span>
-                                <input type="number" class="form-control">
+                                <input type="number" name="lavagne" class="form-control">
                             </div>
                             <div class="input-group mb-3 input-group-sm">
                                 <span class="input-group-text">Proiettori</span>
-                                <input type="number" class="form-control">
+                                <input type="number" name="proiettori" class="form-control">
                             </div>
                             <div class="input-group mb-3 input-group-sm">
                                 <span class="input-group-text">Computer</span>
-                                <input type="number" class="form-control">
+                                <input type="number" name="computer" class="form-control">
                             </div>
                         </div>
                     </fieldset>
@@ -115,7 +115,7 @@ require "../common/head.html";
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
-                                    <button type="button" class="btn btn-primary">Salva modifiche</button>
+                                    <button type="submit" name="submit" class="btn btn-primary">Salva modifiche</button>
                                 </div>
                             </div>
                         </div>

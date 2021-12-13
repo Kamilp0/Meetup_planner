@@ -53,13 +53,13 @@ require "../common/navbar sopra.php";
                             </thead>
                             <tbody>
                             <tr>
-                                <td>23 dicembre 2021</td>
-                                <td>10:00</td>
-                                <td>Alfa, Galileo</td>
-                                <td>2 ore</td>
-                                <td>Bilancio mesi di novembre e dicembre</td>
-                                <td><a href="lista%20invitati.php">visualizza la lista degli invitati</a></td>
-                                <td><a href="modifica%20utente.php" type="button" class="btn btn-primary btn-sm">Modifica informazioni</a></td>
+                                <td>13/02/2022</td>
+                                <td>10:30</td>
+                                <td>Alfa, Newton</td>
+                                <td>1 ora</td>
+                                <td>Presentazione seconda consegna PWEB2021</td>
+                                <td><a href="lista%20invitati.php?id_riunione=46772">visualizza la lista degli invitati</a></td>
+                                <td><a href="" type="button" class="btn btn-primary btn-sm">Modifica informazioni</a></td>
                             </tr>
                             </tbody>
                         </table>
@@ -93,7 +93,7 @@ require "../common/navbar sopra.php";
                                 <td>Beta, Newton</td>
                                 <td>4 ore</td>
                                 <td>Corso di aggiornamento per manutentori</td>
-                                <td><a href="lista%20invitati.php">visualizza la lista degli invitati</a></td>
+                                <td><a href="lista%20invitati.php?id_riunione=62254">visualizza la lista degli invitati</a></td>
                             </tr>
                             </tbody>
                         </table>
