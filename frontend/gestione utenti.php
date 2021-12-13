@@ -24,7 +24,7 @@ require "../common/navbar sopra.php";
         <main>
             <div class="container-fluid pt-5 px-5" >
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item"><a href="../index.html">Homepage</a></li>
+                    <li class="breadcrumb-item"><a href="../index.php">Homepage</a></li>
                     <li class="breadcrumb-item active">Gestione utenti</li>
                 </ol>
                 <div class="row mb-4">
@@ -36,7 +36,7 @@ require "../common/navbar sopra.php";
                     </div>
                     <div class="col-5 container-fluid">
                         <?PHP if(isset($_GET['submit'])){$ordine = $_GET['ordine'];}else{$ordine = 'cognome';} ?>
-                        <form action="http://localhost/pweb2021/frontend/gestione%20utenti.php" method="get">
+                        <form action="gestione%20utenti.php" method="get">
                             <div class="row justify-content-md-center">
                                 <label class="col-form-label col-sm-auto form-check-label" for="opzioni">Ordina per:</label>
                                 <select id="opzioni" name="ordine" class="col-sm-auto form-select-sm">

@@ -42,7 +42,7 @@ require "../common/navbar sopra.php";
                                     </h4>
                                     <div class="row">
                                         <a class="col-3" href="../frontend/gestione%20utenti.php">torna alla gestione utenti</a>
-                                        <a class="col-9" href="../index.html">homepage</a>
+                                        <a class="col-9" href="../index.php">homepage</a>
                                     </div>';
                 } else {
                     $ERRORI = mysqli_error($dbc);

@@ -1,4 +1,4 @@
-<form action="http://localhost/pweb2021/backend/updatesala_back.php" method="post">
+<form action="../backend/updatesala_back.php" method="post">
 
     <?PHP
     require_once('../backend/mysql_connect_back.php');

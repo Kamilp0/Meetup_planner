@@ -34,7 +34,7 @@ require "../common/navbar sopra.php";
                         <h1 class="mt-4">Aggiungi utente</h1>
                     </div>
                 </div>
-                <form action="http://localhost/pweb2021/backend/nuovoutente_back.php" method="post">
+                <form action="../backend/nuovoutente_back.php" method="post">
                     <div class="row mb-3">
                         <label for="nome" class="col-sm-2 col-form-label">Nome:</label>
                         <div class="col-sm-10">

@@ -34,7 +34,7 @@ require "../common/navbar sopra.php";
                         <h1 class="mt-4">Nuova riunione</h1>
                     </div>
                 </div>
-                <form action="http://localhost/pweb2021/backend/nuovariunione_back.php" method="post">
+                <form action="../backend/nuovariunione_back.php" method="post">
                     <fieldset class="row mb-3">
                         <legend class="col-form-label col-sm-2 pt-0">Dipartimento:</legend>
                         <div class="col-sm-10">

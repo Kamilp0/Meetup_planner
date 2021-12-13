@@ -34,7 +34,7 @@ require "../common/head.html";
                         <h1 class="mt-4">Aggiungi sala</h1>
                     </div>
                 </div>
-                <form action="http://localhost/pweb2021/backend/nuovasala_back.php" method="post">
+                <form action="../backend/nuovasala_back.php" method="post">
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label">Nome sala:</label>
                         <div class="col-sm-10">
