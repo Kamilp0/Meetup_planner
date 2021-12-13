@@ -25,7 +25,7 @@ require "../common/navbar sopra.php";
         <main>
             <div class="conteiner-fluid pt-5 px-5">
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item"><a href="../index.php">Homepage</a></li>
+                    <li class="breadcrumb-item"><a href="../index.html">Homepage</a></li>
                     <li class="breadcrumb-item"><a href="gestione utenti.php">Gestione utenti</a></li>
                     <li class="breadcrumb-item active">Aggiungi utente</li>
                 </ol>
@@ -34,7 +34,7 @@ require "../common/navbar sopra.php";
                         <h1 class="mt-4">Aggiungi utente</h1>
                     </div>
                 </div>
-                <form action="http://localhost/pweb2021/backend/nuovoutente.php" method="post">
+                <form action="http://localhost/pweb2021/backend/nuovoutente_back.php" method="post">
                     <div class="row mb-3">
                         <label for="nome" class="col-sm-2 col-form-label">Nome:</label>
                         <div class="col-sm-10">
@@ -63,25 +63,25 @@ require "../common/navbar sopra.php";
                         <legend class="col-form-label col-sm-2 pt-0">Dipartimento:</legend>
                         <div class="col-sm-10">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="dipartimento" id="gridRadios1" value="copernico" >
+                                <input class="form-check-input" type="radio" name="dipartimento" id="gridRadios1" value="Copernico" >
                                 <label class="form-check-label" for="dipartimento">
                                     Copernico
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="dipartimento" id="gridRadios1" value="galileo">
+                                <input class="form-check-input" type="radio" name="dipartimento" id="gridRadios1" value="Galileo">
                                 <label class="form-check-label" for="dipartimento">
                                     Galileo
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="dipartimento" id="gridRadios1" value="keplero">
+                                <input class="form-check-input" type="radio" name="dipartimento" id="gridRadios1" value="Keplero">
                                 <label class="form-check-label" for="dipartimento">
                                     Keplero
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="dipartimento" id="gridRadios1" value="newton">
+                                <input class="form-check-input" type="radio" name="dipartimento" id="gridRadios1" value="Newton">
                                 <label class="form-check-label" for="dipartimento">
                                     Newton
                                 </label>

@@ -25,7 +25,7 @@ require "../common/navbar sopra.php";
         <main>
             <div class="container-fluid pt-5 px-5">
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item"><a href="../index.php">Homepage</a></li>
+                    <li class="breadcrumb-item"><a href="../index.html">Homepage</a></li>
                     <li class="breadcrumb-item"><a href="le%20mie%20riunioni.php">Le mie riunioni</a></li>
                     <li class="breadcrumb-item active">Nuova riunione</li>
                 </ol>
@@ -34,30 +34,30 @@ require "../common/navbar sopra.php";
                         <h1 class="mt-4">Nuova riunione</h1>
                     </div>
                 </div>
-                <form>
+                <form action="http://localhost/pweb2021/backend/nuovariunione_back.php" method="post">
                     <fieldset class="row mb-3">
                         <legend class="col-form-label col-sm-2 pt-0">Dipartimento:</legend>
                         <div class="col-sm-10">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="dipartimento" id="gridRadios1" value="copernico" >
+                                <input class="form-check-input" type="radio" name="dipartimento" id="gridRadios1" value="Copernico" >
                                 <label class="form-check-label" for="dipartimento">
                                     Copernico
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="dipartimento" id="gridRadios1" value="galileo">
+                                <input class="form-check-input" type="radio" name="dipartimento" id="gridRadios1" value="Galileo">
                                 <label class="form-check-label" for="dipartimento">
                                     Galileo
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="dipartimento" id="gridRadios1" value="keplero">
+                                <input class="form-check-input" type="radio" name="dipartimento" id="gridRadios1" value="Keplero">
                                 <label class="form-check-label" for="dipartimento">
                                     Keplero
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="dipartimento" id="gridRadios1" value="newton">
+                                <input class="form-check-input" type="radio" name="dipartimento" id="gridRadios1" value="Newton">
                                 <label class="form-check-label" for="dipartimento">
                                     Newton
                                 </label>
@@ -66,7 +66,7 @@ require "../common/navbar sopra.php";
                     </fieldset>
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label" for="nome-sala">Sala:</label>
-                        <select class="col-sm-10" id="nome-sala">
+                        <select class="col-sm-10" name="sala" id="nome-sala">
                             <option>Alfa</option>
                             <option>Beta</option>
                             <option>Gamma</option>
@@ -78,10 +78,10 @@ require "../common/navbar sopra.php";
                         <div class="col-sm-10">
                             <div class="row">
                                 <div class="col-sm-2">
-                                    <input type="date" class="form-control">
+                                    <input type="date" name="data" class="form-control">
                                 </div>
                                 <div class="col-sm-2">
-                                    <input type="time" class="form-control">
+                                    <input type="time" name="ora" class="form-control">
                                 </div>
                                 <div class="col-sm-8"></div>
                             </div>
@@ -90,29 +90,24 @@ require "../common/navbar sopra.php";
                     <div class="row mb-3">
                         <label for="tema" class="col-sm-2 col-form-label">Tema:</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control">
+                            <input type="text" name="tema" class="form-control" size="100">
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="durata" class="col-sm-2 col-form-label">Dutara:</label>
+                        <label for="durata" class="col-sm-2 col-form-label">Dutara in ore:</label>
                         <div class="col-sm-10">
                             <div class="row">
-                                <div class="col-sm-1 text-right">Ore</div>
                                 <div class="col-sm-1">
-                                    <input type="number" class="form-control">
+                                    <input type="number" class="form-control" name="durata">
                                 </div>
-                                <div class="col-sm-1 text-right">Minuti</div>
-                                <div class="col-sm-1">
-                                    <input type="number" class="form-control">
-                                </div>
-                                <div class="col-sm-8"></div>
+                                <div class="col-sm-11"></div>
                             </div>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label">Invitati:</label>
                         <fieldset disabled class="col-sm-8">
-                                <input type="text" id="disabledTextInput" class="form-control" placeholder="da implementarsi bene bene in PHP">
+                                <input type="text" id="disabledTextInput" class="form-control" placeholder="da implementarsi bene bene in PHP. esempio: Basilio Russo, Gabriella Angelo + alrti 15">
                         </fieldset>
                         <a href="invita.php" class="col-sm-2">Aggiungi invitati</a>
                     </div>
@@ -127,20 +122,14 @@ require "../common/navbar sopra.php";
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <div class="alert alert-dark" role="alert">
-                                        <div class="form-check mb-3">
-                                            <input class="form-check-input" id="utenteautorizzato" type="checkbox" />
-                                            <label class="form-check-label" for="utenteautorizzato">Autorizza l'utente a organizzare riunioni</label>
-                                        </div>
-                                    </div>
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="inputPassword" type="password" placeholder="Conferma Password" />
+                                        <input class="form-control" id="inputPassword" type="password" name="passowrd" placeholder="Conferma Password" />
                                         <label for="inputPassword">Conferma password</label>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
-                                    <button type="button" class="btn btn-primary">Salva modifiche</button>
+                                    <button type="submit" name="submit" class="btn btn-primary">Salva modifiche</button>
                                 </div>
                             </div>
                         </div>

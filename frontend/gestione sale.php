@@ -25,7 +25,7 @@ require "../common/head.html";
                 <main>
                     <div class="container-fluid pt-5 px-5" >
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="../index.php">Homepage</a></li>
+                            <li class="breadcrumb-item"><a href="../index.html">Homepage</a></li>
                             <li class="breadcrumb-item active">Gestione aule</li>
                         </ol>
                         <div class="row justify-content-start mb-4">
@@ -52,14 +52,13 @@ require "../common/head.html";
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        <th scope="row">Prova nome</th>
-                                        <th scope="row" class="tooltipkamil" messaggio-tooltip="via Monterosa 1, Milano"> Galileo </th>
-                                        <td>50</td>
-                                        <td>5</td>
-                                        <td>-</td>
-                                        <td>10</td>
-                                        <td>-</td>
-                                        <td><a href="modifica%20sala.php" type="button" class="btn btn-primary btn-sm">Modifica</a></td>
+
+                                        <?PHP
+
+                                        require "../backend/listasale_back.php";
+
+                                        ?>
+
                                     </tr>
                                     </tbody>
                                 </table>

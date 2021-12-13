@@ -24,17 +24,44 @@ require "../common/navbar sopra.php";
         <main>
             <div class="container-fluid pt-5 px-5" >
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item"><a href="../index.php">Homepage</a></li>
+                    <li class="breadcrumb-item"><a href="../index.html">Homepage</a></li>
                     <li class="breadcrumb-item active">Gestione utenti</li>
                 </ol>
-                <div class="row justify-content-start mb-4">
+                <div class="row mb-4">
                     <div class="col-4">
                         <h1 class="mt-4">Gestione utenti</h1>
                     </div>
-                    <div class="col-4">
+                    <div class="col-3">
                         <a href="aggiungi%20utente.php" type="button" class="btn btn-primary btn-lg" >Aggiungi utente</a>
                     </div>
+                    <div class="col-5 container-fluid">
+                        <?PHP if(isset($_GET['submit'])){$ordine = $_GET['ordine'];}else{$ordine = 'cognome';} ?>
+                        <form action="http://localhost/pweb2021/frontend/gestione%20utenti.php" method="get">
+                            <div class="row justify-content-md-center">
+                                <label class="col-form-label col-sm-auto form-check-label" for="opzioni">Ordina per:</label>
+                                <select id="opzioni" name="ordine" class="col-sm-auto form-select-sm">
+                                    <option <?PHP if($ordine == 'cognome ASC'){echo 'selected';}?> value="cognome ASC">Cognome (A-Z)</option>
+                                    <option <?PHP if($ordine == 'cognome DESC'){echo 'selected';}?> value="cognome DESC">Cognome (Z-A)</option>
+                                    <option <?PHP if($ordine == 'data_nascita ASC'){echo 'selected';}?> value="data_nascita ASC">Data di nascita (dal più vecchio)</option>
+                                    <option <?PHP if($ordine == 'data_nascita DESC'){echo 'selected';}?> value="data_nascita DESC">Data di nascita (dal più giovane)</option>
+                                    <option <?PHP if($ordine == 'email ASC'){echo 'selected';}?> value="email ASC">email (A-Z)</option>
+                                    <option <?PHP if($ordine == 'email DESC'){echo 'selected';}?> value="email DESC">email (Z-A)</option>
+                                    <option <?PHP if($ordine == 'dipartimento ASC'){echo 'selected';}?> value="dipartimento ASC">Dipartimento (A-Z)</option>
+                                    <option <?PHP if($ordine == 'dipartimento DESC'){echo 'selected';}?> value="dipartimento DESC">Dipartimento (Z-A)</option>
+                                    <option <?PHP if($ordine == 'ruolo ASC'){echo 'selected';}?> value="ruolo ASC">Ruolo (A-Z)</option>
+                                    <option <?PHP if($ordine == 'ruolo DESC'){echo 'selected';}?> value="ruolo DESC">Ruolo (Z-A)</option>
+                                    <option <?PHP if($ordine == 'data_autorizzazione'){echo 'selected';}?> value="data_autorizzazione DESC">Prima autorizzati</option>
+                                </select>
+                                <div class="col-sm-auto">
+                                    <button type="submit" name="submit" class="btn btn-secondary btn-md"><i class="fas fa-sync-alt"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
+                    <div class="row mb-3 px-lg-3 text-secondary">
+                        Gli utenti evidenziati in verde sono autorizzati a organizzare riunioni.
+                    </div>
                 <div class="card mb-4">
                     <div class="card-body">
                         <table class="table table-hover">
@@ -46,20 +73,17 @@ require "../common/navbar sopra.php";
                                 <th scope="col">email</th>
                                 <th scope="col">Dipartimento</th>
                                 <th scope="col">Ruolo</th>
-                                <th scope="col">Foto</th>
                             </tr>
                             </thead>
+
                             <tbody>
-                            <tr>
-                                <td>Basilio</td>
-                                <td>Russo</td>
-                                <td>16 ott 1963</td>
-                                <td>russobasilio@sth.com</td>
-                                <td>Copernico</td>
-                                <td>Direttore</td>
-                                <td>vediamo</td>
-                                <td><a href="modifica%20utente.php" type="button" class="btn btn-primary btn-sm">Modifica</a></td>
-                            </tr>
+
+                            <?PHP
+
+                            require "../backend/listautenti_back.php";
+
+                            ?>
+
                             </tbody>
                         </table>
                     </div>
