@@ -1,25 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<?PHP
-
-require "../common/head.html";
-
-?>
+<?php require '../common/head.html'; ?>
 <body class="sb-nav-fixed">
 
-<?PHP
-
-require "../common/navbar sopra.php";
-
-?>
+<?php require '../common/navbar sopra.php'; ?>
 
 <div id="layoutSidenav">
 
-    <?PHP
-
-    require "../common/sidebar admin.php";
-
-    ?>
+    <?php require '../common/sidebar admin.php'; ?>
 
     <div id="layoutSidenav_content">
         <main>
@@ -29,64 +17,72 @@ require "../common/navbar sopra.php";
                         <h1 class="mt-4">Aggiungi sala</h1>
                     </div>
                 </div>
-                <?php
+                <?php if (isset($_POST['submit'])) {
+                    $missingdata = [];
 
-                if(isset($_POST['submit'])){
-                    $missingdata = array();
-
-                    if(empty($_POST['nome'])){
+                    if (empty($_POST['nome'])) {
                         $missingdata[] = 'nome';
                     } else {
                         $nome = trim($_POST['nome']);
                     }
 
-                    if(empty($_POST['dip'])){
+                    if (empty($_POST['dip'])) {
                         $missingdata[] = 'dipartimento';
                     } else {
                         $dip = trim($_POST['dip']);
                     }
 
-                    if(empty($_POST['capienza'])){
+                    if (empty($_POST['capienza'])) {
                         $missingdata[] = 'capienza';
                     } else {
                         $capienza = trim($_POST['capienza']);
                     }
 
-                    if(empty($_POST['tavoli'])){
+                    if (empty($_POST['tavoli'])) {
                         $tavoli = 0;
                     } else {
                         $tavoli = trim($_POST['tavoli']);
                     }
 
-                    if(empty($_POST['lavagne'])){
+                    if (empty($_POST['lavagne'])) {
                         $lavagne = 0;
                     } else {
                         $lavagne = trim($_POST['lavagne']);
                     }
 
-                    if(empty($_POST['proiettori'])){
+                    if (empty($_POST['proiettori'])) {
                         $proiettori = 0;
                     } else {
                         $proiettori = trim($_POST['proiettori']);
                     }
 
-                    if(empty($_POST['computer'])){
+                    if (empty($_POST['computer'])) {
                         $computer = 0;
                     } else {
                         $computer = trim($_POST['computer']);
                     }
 
-                    if(empty($missingdata)){
+                    if (empty($missingdata)) {
+                        require_once 'mysql_connect_back.php';
 
-                        require_once('mysql_connect_back.php');
-
-                        $query = "INSERT INTO sala (nome, dipartimento, capienza, tavoli, lavagne, computer, proiettori) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                        $query =
+                            'INSERT INTO sala (nome, dipartimento, capienza, tavoli, lavagne, computer, proiettori) VALUES (?, ?, ?, ?, ?, ?, ?)';
                         $stmt = mysqli_prepare($dbc, $query);
-                        mysqli_stmt_bind_param($stmt, "ssiiiii", $nome, $dip, $capienza, $tavoli, $lavagne, $computer, $proiettori);
+                        mysqli_stmt_bind_param(
+                            $stmt,
+                            'ssiiiii',
+                            $nome,
+                            $dip,
+                            $capienza,
+                            $tavoli,
+                            $lavagne,
+                            $computer,
+                            $proiettori
+                        );
                         mysqli_stmt_execute($stmt);
 
                         $affected_rows = mysqli_stmt_affected_rows($stmt);
-                        if($affected_rows == 1){
+                        if ($affected_rows == 1) {
                             echo '
                                     <h4 class="alert alert-success">
                                         <i class="fas fa-check-circle"></i><strong>  Fatto!</strong> sala inserita correttamente.
@@ -106,30 +102,23 @@ require "../common/navbar sopra.php";
                             mysqli_stmt_close($stmt);
                             mysqli_close($dbc);
                         }
-
                     } else {
                         echo '                                    
                                     <h4 class="alert alert-danger">
                                         <i class="fas fa-exclamation-circle"></i>
                                         <strong>  Dati mancanti:</br></strong>';
 
-                        foreach($missingdata as $missing){
-                            echo $missing , '</br>';
+                        foreach ($missingdata as $missing) {
+                            echo $missing, '</br>';
                         }
                         echo '</html>';
                     }
-                }
-
-                ?>
+                } ?>
 
             </div>
         </main>
 
-        <?PHP
-
-        require "../common/footer.html";
-
-        ?>
+        <?php require '../common/footer.html'; ?>
 
     </div>
     <div class="text-success">

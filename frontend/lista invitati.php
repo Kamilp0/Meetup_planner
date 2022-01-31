@@ -1,27 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<?PHP
-
+<?php
 $id_riunione = $_GET['id_riunione'];
 
-require "../common/head.html";
-
+require '../common/head.html';
 ?>
 <body class="sb-nav-fixed">
 
-<?PHP
-
-require "../common/navbar sopra.php";
-
-?>
+<?php require '../common/navbar sopra.php'; ?>
 
 <div id="layoutSidenav">
 
-    <?PHP
-
-    require "../common/sidebar admin.php";
-
-    ?>
+    <?php require '../common/sidebar admin.php'; ?>
 
     <div id="layoutSidenav_content">
         <main>
@@ -57,11 +47,7 @@ require "../common/navbar sopra.php";
                     </thead>
                     <tbody>
 
-                    <?PHP
-
-                    require "../backend/listainvitati_back.php";
-
-                    ?>
+                    <?php require '../backend/listainvitati_back.php'; ?>
 
                     </tbody>
                 </table>
@@ -69,11 +55,7 @@ require "../common/navbar sopra.php";
 
         </main>
 
-        <?PHP
-
-        require "../common/footer.html";
-
-        ?>
+        <?php require '../common/footer.html'; ?>
 
     </div>
 </div>

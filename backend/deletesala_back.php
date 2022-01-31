@@ -1,25 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<?PHP
-
-require "../common/head.html";
-
-?>
+<?php require '../common/head.html'; ?>
 <body class="sb-nav-fixed">
 
-<?PHP
-
-require "../common/navbar sopra.php";
-
-?>
+<?php require '../common/navbar sopra.php'; ?>
 
 <div id="layoutSidenav">
 
-    <?PHP
-
-    require "../common/sidebar admin.php";
-
-    ?>
+    <?php require '../common/sidebar admin.php'; ?>
 
     <div id="layoutSidenav_content">
         <main>
@@ -30,13 +18,18 @@ require "../common/navbar sopra.php";
                     </div>
                 </div>
                 <?php
-                    require_once('mysql_connect_back.php');
+                require_once 'mysql_connect_back.php';
 
-                    $query = 'DELETE FROM sala WHERE nome=\''.$_GET['sala'].'\' AND dipartimento=\''.$_GET['dip'].'\';';
-                    //echo $query;
-                    $esito = mysqli_query($dbc, $query);
-                    if($esito==TRUE){
-                        echo '
+                $query =
+                    'DELETE FROM sala WHERE nome=\'' .
+                    $_GET['sala'] .
+                    '\' AND dipartimento=\'' .
+                    $_GET['dip'] .
+                    '\';';
+                //echo $query;
+                $esito = mysqli_query($dbc, $query);
+                if ($esito == true) {
+                    echo '
                                     <h4 class="alert alert-success">
                                         <i class="fas fa-check-circle"></i><strong>  Fatto!</strong> modifica eseguita con successo.
                                     </h4>
@@ -44,24 +37,20 @@ require "../common/navbar sopra.php";
                                         <a class="col-3" href="../frontend/gestione%20sale.php">torna alla gestione sale</a>
                                         <a class="col-9" href="../index.php">homepage</a>
                                     </div>';
-                    } else {
-                        $ERRORI = mysqli_error($dbc);
-                        echo '
+                } else {
+                    $ERRORI = mysqli_error($dbc);
+                    echo '
                                     <h4 class="alert alert-danger">
                                         <i class="fas fa-exclamation-circle"></i><strong>  C\'è stato un problema:</br></strong>';
-                        echo $ERRORI, '</h4>';
-                    }
-                    mysqli_close($dbc);
+                    echo $ERRORI, '</h4>';
+                }
+                mysqli_close($dbc);
                 ?>
 
             </div>
         </main>
 
-        <?PHP
-
-        require "../common/footer.html";
-
-        ?>
+        <?php require '../common/footer.html'; ?>
 
     </div>
     <div class="text-success">

@@ -1,40 +1,63 @@
 <form action="../backend/updatesala_back.php" method="post">
 
-    <?PHP
-    require_once('../backend/mysql_connect_back.php');
-    $query = 'SELECT * FROM sala WHERE nome = \''.$nome.'\' AND dipartimento = \''.$dip.'\';';
+    <?php
+    require_once '../backend/mysql_connect_back.php';
+    $query =
+        'SELECT * FROM sala WHERE nome = \'' .
+        $nome .
+        '\' AND dipartimento = \'' .
+        $dip .
+        '\';';
     $datisala = mysqli_fetch_array(@mysqli_query($dbc, $query));
     ?>
 
     <div class="row mb-3">
         <label for="nome-sala" class="col-sm-2 col-form-label">Nome sala:</label>
         <div class="col-sm-10">
-            <input type="text" name="nome" class="form-control" value="<?PHP echo $datisala['nome']; ?>" readonly>
+            <input type="text" name="nome" class="form-control" value="<?php echo $datisala[
+                'nome'
+            ]; ?>" readonly>
         </div>
     </div>
     <fieldset class="row mb-3">
         <legend class="col-form-label col-sm-2 pt-0">Dipartimento:</legend>
         <div class="col-sm-10">
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="dip" id="gridRadios1" value="Copernico" <?PHP if($datisala['dipartimento']=='Copernico'){echo 'checked';} ?> readonly>
+                <input class="form-check-input" type="radio" name="dip" id="gridRadios1" value="Copernico" <?php if (
+                    $datisala['dipartimento'] == 'Copernico'
+                ) {
+                    echo 'checked';
+                } ?> readonly>
                 <label class="form-check-label" for="gridRadios1">
                     Copernico
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="dip" id="gridRadios1" value="Galileo" <?PHP if($datisala['dipartimento']=='Galileo'){echo 'checked';} ?> readonly>
+                <input class="form-check-input" type="radio" name="dip" id="gridRadios1" value="Galileo" <?php if (
+                    $datisala['dipartimento'] == 'Galileo'
+                ) {
+                    echo 'checked';
+                } ?> readonly>
                 <label class="form-check-label" for="gridRadios1">
                     Galileo
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="dip" id="gridRadios1" value="Keplero" <?PHP if($datisala['dipartimento']=='Keplero'){echo 'checked';} ?> readonly>
+                <input class="form-check-input" type="radio" name="dip" id="gridRadios1" value="Keplero" <?php if (
+                    $datisala['dipartimento'] == 'Keplero'
+                ) {
+                    echo 'checked';
+                } ?> readonly>
                 <label class="form-check-label" for="gridRadios1">
                     Keplero
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="dip" id="gridRadios1" value="Newton" <?PHP if($datisala['dipartimento']=='Newton'){echo 'checked';} ?> readonly>
+                <input class="form-check-input" type="radio" name="dip" id="gridRadios1" value="Newton" <?php if (
+                    $datisala['dipartimento'] == 'Newton'
+                ) {
+                    echo 'checked';
+                } ?> readonly>
                 <label class="form-check-label" for="gridRadios1">
                     Newton
                 </label>
@@ -44,7 +67,9 @@
     <div class="row mb-3">
         <label for="capienza-sala" class="col-sm-2 col-form-label">Capienza:</label>
         <div class="col-sm-10">
-            <input type="number" name="capienza" class="form-control" value="<?PHP echo $datisala['capienza'];?>">
+            <input type="number" name="capienza" class="form-control" value="<?php echo $datisala[
+                'capienza'
+            ]; ?>">
         </div>
     </div>
     <fieldset class="row mb-3">
@@ -52,19 +77,27 @@
         <div class="col-sm-10">
             <div class="input-group mb-3 input-group-sm">
                 <span class="input-group-text">Tavoli</span>
-                <input type="number" name="tavoli" class="form-control" value="<?PHP echo $datisala['tavoli']; ?>">
+                <input type="number" name="tavoli" class="form-control" value="<?php echo $datisala[
+                    'tavoli'
+                ]; ?>">
             </div>
             <div class="input-group mb-3 input-group-sm">
                 <span class="input-group-text">Lavagne</span>
-                <input type="number" name="lavagne" class="form-control" value="<?PHP echo $datisala['lavagne']; ?>">
+                <input type="number" name="lavagne" class="form-control" value="<?php echo $datisala[
+                    'lavagne'
+                ]; ?>">
             </div>
             <div class="input-group mb-3 input-group-sm">
                 <span class="input-group-text">Proiettori</span>
-                <input type="number" name="proiettori" class="form-control" value="<?PHP echo $datisala['proiettori']; ?>">
+                <input type="number" name="proiettori" class="form-control" value="<?php echo $datisala[
+                    'proiettori'
+                ]; ?>">
             </div>
             <div class="input-group mb-3 input-group-sm">
                 <span class="input-group-text">Computer</span>
-                <input type="number" name="computer" class="form-control" value="<?PHP echo $datisala['computer']; ?>">
+                <input type="number" name="computer" class="form-control" value="<?php echo $datisala[
+                    'computer'
+                ]; ?>">
             </div>
         </div>
     </fieldset>

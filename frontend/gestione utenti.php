@@ -1,25 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<?PHP
-
-require "../common/head.html";
-
-?>
+<?php require '../common/head.html'; ?>
 <body class="sb-nav-fixed">
 
-<?PHP
-
-require "../common/navbar sopra.php";
-
-?>
+<?php require '../common/navbar sopra.php'; ?>
 
 <div id="layoutSidenav">
 
-    <?PHP
-
-    require "../common/sidebar admin.php";
-
-    ?>
+    <?php require '../common/sidebar admin.php'; ?>
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid pt-5 px-5" >
@@ -35,22 +23,62 @@ require "../common/navbar sopra.php";
                         <a href="aggiungi%20utente.php" type="button" class="btn btn-primary btn-lg" >Aggiungi utente</a>
                     </div>
                     <div class="col-5 container-fluid">
-                        <?PHP if(isset($_GET['submit'])){$ordine = $_GET['ordine'];}else{$ordine = 'cognome';} ?>
+                        <?php if (isset($_GET['submit'])) {
+                            $ordine = $_GET['ordine'];
+                        } else {
+                            $ordine = 'cognome';
+                        } ?>
                         <form action="gestione%20utenti.php" method="get">
                             <div class="row justify-content-md-center">
                                 <label class="col-form-label col-sm-auto form-check-label" for="opzioni">Ordina per:</label>
                                 <select id="opzioni" name="ordine" class="col-sm-auto form-select-sm">
-                                    <option <?PHP if($ordine == 'cognome ASC'){echo 'selected';}?> value="cognome ASC">Cognome (A-Z)</option>
-                                    <option <?PHP if($ordine == 'cognome DESC'){echo 'selected';}?> value="cognome DESC">Cognome (Z-A)</option>
-                                    <option <?PHP if($ordine == 'data_nascita ASC'){echo 'selected';}?> value="data_nascita ASC">Data di nascita (dal più vecchio)</option>
-                                    <option <?PHP if($ordine == 'data_nascita DESC'){echo 'selected';}?> value="data_nascita DESC">Data di nascita (dal più giovane)</option>
-                                    <option <?PHP if($ordine == 'email ASC'){echo 'selected';}?> value="email ASC">email (A-Z)</option>
-                                    <option <?PHP if($ordine == 'email DESC'){echo 'selected';}?> value="email DESC">email (Z-A)</option>
-                                    <option <?PHP if($ordine == 'dipartimento ASC'){echo 'selected';}?> value="dipartimento ASC">Dipartimento (A-Z)</option>
-                                    <option <?PHP if($ordine == 'dipartimento DESC'){echo 'selected';}?> value="dipartimento DESC">Dipartimento (Z-A)</option>
-                                    <option <?PHP if($ordine == 'ruolo ASC'){echo 'selected';}?> value="ruolo ASC">Ruolo (A-Z)</option>
-                                    <option <?PHP if($ordine == 'ruolo DESC'){echo 'selected';}?> value="ruolo DESC">Ruolo (Z-A)</option>
-                                    <option <?PHP if($ordine == 'data_autorizzazione'){echo 'selected';}?> value="data_autorizzazione DESC">Prima autorizzati</option>
+                                    <option <?php if (
+                                        $ordine == 'cognome ASC'
+                                    ) {
+                                        echo 'selected';
+                                    } ?> value="cognome ASC">Cognome (A-Z)</option>
+                                    <option <?php if (
+                                        $ordine == 'cognome DESC'
+                                    ) {
+                                        echo 'selected';
+                                    } ?> value="cognome DESC">Cognome (Z-A)</option>
+                                    <option <?php if (
+                                        $ordine == 'data_nascita ASC'
+                                    ) {
+                                        echo 'selected';
+                                    } ?> value="data_nascita ASC">Data di nascita (dal più vecchio)</option>
+                                    <option <?php if (
+                                        $ordine == 'data_nascita DESC'
+                                    ) {
+                                        echo 'selected';
+                                    } ?> value="data_nascita DESC">Data di nascita (dal più giovane)</option>
+                                    <option <?php if ($ordine == 'email ASC') {
+                                        echo 'selected';
+                                    } ?> value="email ASC">email (A-Z)</option>
+                                    <option <?php if ($ordine == 'email DESC') {
+                                        echo 'selected';
+                                    } ?> value="email DESC">email (Z-A)</option>
+                                    <option <?php if (
+                                        $ordine == 'dipartimento ASC'
+                                    ) {
+                                        echo 'selected';
+                                    } ?> value="dipartimento ASC">Dipartimento (A-Z)</option>
+                                    <option <?php if (
+                                        $ordine == 'dipartimento DESC'
+                                    ) {
+                                        echo 'selected';
+                                    } ?> value="dipartimento DESC">Dipartimento (Z-A)</option>
+                                    <option <?php if ($ordine == 'ruolo ASC') {
+                                        echo 'selected';
+                                    } ?> value="ruolo ASC">Ruolo (A-Z)</option>
+                                    <option <?php if ($ordine == 'ruolo DESC') {
+                                        echo 'selected';
+                                    } ?> value="ruolo DESC">Ruolo (Z-A)</option>
+                                    <option <?php if (
+                                        $ordine == 'data_autorizzazione'
+                                    ) {
+                                        echo 'selected';
+                                    } ?> value="data_autorizzazione DESC">Prima autorizzati</option>
                                 </select>
                                 <div class="col-sm-auto">
                                     <button type="submit" name="submit" class="btn btn-secondary btn-md"><i class="fas fa-sync-alt"></i></button>
@@ -78,11 +106,7 @@ require "../common/navbar sopra.php";
 
                             <tbody>
 
-                            <?PHP
-
-                            require "../backend/listautenti_back.php";
-
-                            ?>
+                            <?php require '../backend/listautenti_back.php'; ?>
 
                             </tbody>
                         </table>
@@ -91,11 +115,7 @@ require "../common/navbar sopra.php";
             </div>
         </main>
 
-        <?PHP
-
-        require "../common/footer.html";
-
-        ?>
+        <?php require '../common/footer.html'; ?>
 
     </div>
 </div>

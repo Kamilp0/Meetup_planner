@@ -1,25 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<?PHP
-
-require "../common/head.html";
-
-?>
+<?php require '../common/head.html'; ?>
 <body class="sb-nav-fixed">
 
-<?PHP
-
-require "../common/navbar sopra.php";
-
-?>
+<?php require '../common/navbar sopra.php'; ?>
 
 <div id="layoutSidenav">
 
-    <?PHP
-
-    require "../common/sidebar admin.php";
-
-    ?>
+    <?php require '../common/sidebar admin.php'; ?>
 
     <div id="layoutSidenav_content">
         <main>
@@ -27,11 +15,7 @@ require "../common/navbar sopra.php";
                 elenco dei dipendenti con un checkbox di fianco per selezionare chi invitare (anche opzione seleziona/deselezona tutto). barra di ricerca per cercare un dipendente singolo o filtrare per ruolo e/o dipartimento.
             </div>
         </main>
-        <?PHP
-
-        require "../common/footer.html";
-
-        ?>
+        <?php require '../common/footer.html'; ?>
 
     </div>
 </div>

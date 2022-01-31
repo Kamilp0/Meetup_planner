@@ -53,11 +53,12 @@
 
 <!--    <div id="layoutSidenav">-->
 <!--            SIDE BAR-->
-<!--    --><?PHP
+<!--    --><?php
 //
 //    require "./common/sidebar admin.php";
 //
-//    ?>
+//
+?>
 
 <div id="home_content">
     <main>
@@ -118,10 +119,7 @@
                 </div>
             </div>
     </main>
-    <?PHP
-    require "./common/footer.html"
-
-    ?>
+    <?php require './common/footer.html'; ?>
 </div>
 
 

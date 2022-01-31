@@ -1,25 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<?PHP
-
-require "../common/head.html";
-
-?>
+<?php require '../common/head.html'; ?>
     <body class="sb-nav-fixed">
 
-    <?PHP
-
-    require "../common/navbar sopra.php";
-
-    ?>
+    <?php require '../common/navbar sopra.php'; ?>
 
        <div id="layoutSidenav">
 
-            <?PHP
-
-            require "../common/sidebar admin.php";
-
-            ?>
+            <?php require '../common/sidebar admin.php'; ?>
 
             <div id="layoutSidenav_content">
                 <main>
@@ -53,11 +41,7 @@ require "../common/head.html";
                                     <tbody>
                                     <tr>
 
-                                        <?PHP
-
-                                        require "../backend/listasale_back.php";
-
-                                        ?>
+                                        <?php require '../backend/listasale_back.php'; ?>
 
                                     </tr>
                                     </tbody>
@@ -67,11 +51,7 @@ require "../common/head.html";
                     </div>
                 </main>
 
-                <?PHP
-
-                require "../common/footer.html";
-
-                ?>
+                <?php require '../common/footer.html'; ?>
 
             </div>
         </div>

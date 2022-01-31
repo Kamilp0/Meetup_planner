@@ -1,25 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<?PHP
-
-require "../common/head.html";
-
-?>
+<?php require '../common/head.html'; ?>
 <body class="sb-nav-fixed">
 
-<?PHP
-
-require "../common/navbar sopra.php";
-
-?>
+<?php require '../common/navbar sopra.php'; ?>
 
 <div id="layoutSidenav">
 
-    <?PHP
-
-    require "../common/sidebar admin.php";
-
-    ?>
+    <?php require '../common/sidebar admin.php'; ?>
 
     <div id="layoutSidenav_content">
         <main>
@@ -29,65 +17,83 @@ require "../common/navbar sopra.php";
                         <h1 class="mt-4">Aggiungi utente</h1>
                     </div>
                 </div>
-                <?php
+                <?php if (isset($_POST['submit'])) {
+                    $missingdata = [];
 
-                if(isset($_POST['submit'])){
-                    $missingdata = array();
-
-                    if(empty($_POST['nome'])){
+                    if (empty($_POST['nome'])) {
                         $missingdata[] = 'nome';
                     } else {
                         $nome = trim($_POST['nome']);
                     }
 
-                    if(empty($_POST['cognome'])){
+                    if (empty($_POST['cognome'])) {
                         $missingdata[] = 'cognome';
                     } else {
                         $cognome = trim($_POST['cognome']);
                     }
 
-                    if(empty($_POST['datadinascita'])){
+                    if (empty($_POST['datadinascita'])) {
                         $missingdata[] = 'datadinascita';
                     } else {
                         $datadinascita = trim($_POST['datadinascita']);
                     }
 
-                    if(empty($_POST['email'])){
+                    if (empty($_POST['email'])) {
                         $missingdata[] = 'email';
                     } else {
                         $email = trim($_POST['email']);
                     }
 
-                    if(empty($_POST['dipartimento'])){
+                    if (empty($_POST['dipartimento'])) {
                         $missingdata[] = 'dipartimento';
                     } else {
                         $dipartimento = trim($_POST['dipartimento']);
                     }
 
-                    if(empty($_POST['ruolo'])){
+                    if (empty($_POST['ruolo'])) {
                         $missingdata[] = 'ruolo';
                     } else {
                         $ruolo = trim($_POST['ruolo']);
                     }
 
-                    if(empty($missingdata)){
+                    if (empty($missingdata)) {
+                        require_once 'mysql_connect_back.php';
 
-                        require_once('mysql_connect_back.php');
-
-                        if(isset($_POST['utenteautorizzato'])){
+                        if (isset($_POST['utenteautorizzato'])) {
                             $admin = 'utentecheautorizza';
-                            $query = "INSERT INTO persona (nome, cognome, data_nascita, email, dipartimento, ruolo, data_autorizzazione, autorizzato_da, password) VALUES (?, ?, ?, ?, ?, ?, NOW(), ?, default )";
+                            $query =
+                                'INSERT INTO persona (nome, cognome, data_nascita, email, dipartimento, ruolo, data_autorizzazione, autorizzato_da, password) VALUES (?, ?, ?, ?, ?, ?, NOW(), ?, default )';
                             $stmt = mysqli_prepare($dbc, $query);
-                            mysqli_stmt_bind_param($stmt, "sssssss", $nome, $cognome, $datadinascita, $email, $dipartimento, $ruolo, $admin);
+                            mysqli_stmt_bind_param(
+                                $stmt,
+                                'sssssss',
+                                $nome,
+                                $cognome,
+                                $datadinascita,
+                                $email,
+                                $dipartimento,
+                                $ruolo,
+                                $admin
+                            );
                         } else {
-                            $query = "INSERT INTO persona (nome, cognome, data_nascita, email, dipartimento, ruolo, password) VALUES (?, ?, ?, ?, ?, ?, default )";
+                            $query =
+                                'INSERT INTO persona (nome, cognome, data_nascita, email, dipartimento, ruolo, password) VALUES (?, ?, ?, ?, ?, ?, default )';
                             $stmt = mysqli_prepare($dbc, $query);
-                            mysqli_stmt_bind_param($stmt, "ssssss", $nome, $cognome, $datadinascita, $email, $dipartimento, $ruolo);
+                            mysqli_stmt_bind_param(
+                                $stmt,
+                                'ssssss',
+                                $nome,
+                                $cognome,
+                                $datadinascita,
+                                $email,
+                                $dipartimento,
+                                $ruolo
+                            );
                         }
                         mysqli_stmt_execute($stmt);
 
                         $affected_rows = mysqli_stmt_affected_rows($stmt);
-                        if($affected_rows == 1){
+                        if ($affected_rows == 1) {
                             echo '
                                     <h4 class="alert alert-success">
                                         <i class="fas fa-check-circle"></i><strong>  Fatto!</strong> utente inserito correttamente.
@@ -107,30 +113,23 @@ require "../common/navbar sopra.php";
                             mysqli_stmt_close($stmt);
                             mysqli_close($dbc);
                         }
-
                     } else {
                         echo '                                    
                                     <h4 class="alert alert-danger">
                                         <i class="fas fa-exclamation-circle"></i>
                                         <strong>  Dati mancanti:</br></strong>';
 
-                        foreach($missingdata as $missing){
-                            echo $missing , '</br>';
+                        foreach ($missingdata as $missing) {
+                            echo $missing, '</br>';
                         }
                         echo '</html>';
                     }
-                }
-
-                ?>
+                } ?>
 
             </div>
         </main>
 
-        <?PHP
-
-        require "../common/footer.html";
-
-        ?>
+        <?php require '../common/footer.html'; ?>
 
     </div>
     <div class="text-success">
