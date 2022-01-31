@@ -9,26 +9,28 @@
   <body>
     <?php
     require_once 'mysql_connect_back.php';
+    session_start();
+
     $email = $_POST['email'];
     $password = $_POST['password'];
     $user_exist = false;
+    $user_email = '';
 
-    $query = 'SELECT email, password FROM persona';
+    $query = 'SELECT * FROM persona';
     $res = $dbc->query($query);
 
     if (!$res) {
-        //handle query error
+        echo 'query error';
     } else {
         $row = $res->fetch_assoc();
         while ($row && !$user_exist) {
             if ($row['email'] == $email && $row['password'] == $password) {
                 $user_exist = true;
+                $_SESSION['user_data'] = $row;
             }
             $row = $res->fetch_assoc();
         }
     }
-
-    session_start();
 
     if ($user_exist) {
         //right credentials

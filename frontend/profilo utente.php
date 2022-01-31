@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php require '../common/head.html'; ?>
+<?php
+require '../common/head.html';
+session_start();
+$user_data = $_SESSION['user_data'];
+?>
 
 <body class="sb-nav-fixed">
 
@@ -8,12 +12,9 @@
 
 <div id="layoutSidenav">
 
-    <?php require '../common/sidebar admin.php'; ?>
+    <?php require_once '../common/sidebar admin.php'; ?>
 
     <div id="layoutSidenav_content">
-        <?php
-// echo 'PROVA PHP';
-?>
         <main>
             <div class="conteiner-fluid pt-5 px-5">
                 <ol class="breadcrumb mb-4">
@@ -31,29 +32,37 @@
                             <div class="p-2 d-flex flex-row">
                                 <label for="nome" class="col-sm-2 col-form-label">Nome:</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" value="Basilio" readonly>
+                                    <input type="text" class="form-control" value=<?php echo $user_data[
+                                        'nome'
+                                    ]; ?> readonly>
                                 </div>
                             </div>
                             <div class="p-2 d-flex flex-row justify-content-evenly">
                                 <label for="Cognome" class="col-sm-2 col-form-label" >Cognome:</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" value="Russo" readonly>
+                                    <input type="text" class="form-control" value=<?php echo $user_data[
+                                        'cognome'
+                                    ]; ?> readonly>
                                 </div>
                             </div>
                             <div class="p-2 d-flex flex-row">
                                 <label for="nome" class="col-sm-2 col-form-label">Email:</label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" value="basilio.russo@email.com" readonly>
+                                    <input type="email" class="form-control" value=<?php echo $user_data[
+                                        'email'
+                                    ]; ?> readonly>
                                 </div>
                             </div>
                             <div class="p-2 d-flex flex-row justify-content-evenly">
                                 <label for="Cognome" class="col-sm-2 col-form-label" >Password:</label>
                                 <div class="col-sm-10">
-                                    <input type="password" class="form-control" value="password" readonly>
+                                    <input type="password" class="form-control" value=<?php echo $user_data[
+                                        'password'
+                                    ]; ?> readonly>
                                 </div>
                             </div>
                             <div class="p-2 ">
-                                <a href="modifica%20utente.php" class="btn btn-primary" role="button">Modifica profilo</a>
+                                <a href="modifica%20profilo.php" class="btn btn-primary" role="button">Modifica profilo</a>
                             </div>
                         </div>
                         <div class="col">
