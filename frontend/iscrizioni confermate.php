@@ -3,7 +3,10 @@
 <?php require '../common/head.html'; ?>
 <body class="sb-nav-fixed">
 
-<?php require '../common/navbar sopra.php'; ?>
+<?php
+require '../common/navbar sopra.php';
+require '../backend/iscrizioni_confermate_back.php';
+?>
 
 <div id="layoutSidenav">
 
@@ -38,15 +41,34 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>23 dicembre 2021</td>
-                                <td>10:00</td>
-                                <td>Alfa, Galileo</td>
-                                <td>2 ore</td>
-                                <td>Bilancio mesi di novembre e dicembre</td>
-                                <td>basilio.russo@hotmail.com</td>
-                                <td><a href="#link" type="button" class="btn btn-danger btn-sm">Annulla iscrizione</a></td>
-                            </tr>
+                                <?php while ($invito = $res->fetch_assoc()) {
+                                    echo '<tr>
+                                            <td>' .
+                                        $invito['data'] .
+                                        '</td>
+                                            <td>' .
+                                        $invito['ora'] .
+                                        '</td>
+                                            <td>' .
+                                        $invito['nome_sala'] .
+                                        ', ' .
+                                        $invito['dipartimento'] .
+                                        '</td>
+                                            <td>' .
+                                        $invito['durata_ore'] .
+                                        ' ' .
+                                        'ora/e' .
+                                        '</td>
+                                            <td>' .
+                                        $invito['tema'] .
+                                        '</td>
+                                            <td>' .
+                                        $invito['organizzatore'] .
+                                        '</td>
+                                            <td><a href="#link" type="button" class="btn btn-danger btn-sm">Annulla iscrizione</a></td>
+                                        </tr>';
+                                } ?>
+
                             </tbody>
                         </table>
                     </div>

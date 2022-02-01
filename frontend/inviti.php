@@ -7,7 +7,10 @@
 
 <div id="layoutSidenav">
 
-    <?php require '../common/sidebar admin.php'; ?>
+    <?php
+    require '../common/sidebar admin.php';
+    require '../backend/inviti_back.php';
+    ?>
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid pt-5 px-5" >
@@ -25,7 +28,7 @@
                     </div>
                 </div>
                 <div class="card mb-4">
-                    <div class="card-body">
+                <div class="card-body">
                         <table class="table table-hover">
                             <thead>
                             <tr>
@@ -38,16 +41,34 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>23 dicembre 2021</td>
-                                <td>10:00</td>
-                                <td>Alfa, Galileo</td>
-                                <td>2 ore</td>
-                                <td>Bilancio mesi di novembre e dicembre</td>
-                                <td>basilio.russo@hotmail.com</td>
-                                <td><button class="btn-sm btn-success">Conferma</button></td>
-                                <td><button class="btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#denyModal">Rifiuta</button></td>
-                            </tr>
+                                <?php while ($invito = $res->fetch_assoc()) {
+                                    echo '<tr>
+                                            <td>' .
+                                        $invito['data'] .
+                                        '</td>
+                                            <td>' .
+                                        $invito['ora'] .
+                                        '</td>
+                                            <td>' .
+                                        $invito['nome_sala'] .
+                                        ', ' .
+                                        $invito['dipartimento'] .
+                                        '</td>
+                                            <td>' .
+                                        $invito['durata_ore'] .
+                                        ' ' .
+                                        'ora/e' .
+                                        '</td>
+                                            <td>' .
+                                        $invito['tema'] .
+                                        '</td>
+                                            <td>' .
+                                        $invito['organizzatore'] .
+                                        '</td>
+                                            <td><button class="btn-sm btn-success">Conferma</button></td>
+                                            <td><button class="btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#denyModal">Rifiuta</button></td>
+                                        </tr>';
+                                } ?>
                             </tbody>
                         </table>
                     </div>
@@ -60,12 +81,6 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-<!--                                <div class="alert alert-dark" role="alert">-->
-<!--                                    <div class="form-check mb-3">-->
-<!--                                        <input class="form-check-input" id="utenteautorizzato" type="checkbox" />-->
-<!--                                        <label class="form-check-label" for="utenteautorizzato">Autorizza l'utente a organizzare riunioni</label>-->
-<!--                                    </div>-->
-<!--                                </div>-->
                                 <div class="form-floating mb-3">
                                     <input class="form-control" id="inputText" type="text" placeholder="Motivazione" />
                                     <label for="inputText">Motivazione</label>
