@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<?php
+session_start();
+if (!isset($_SESSION['user_data'])) {
+    header('Location:  ./frontend/login.php');
+}
+?>
 <html lang="en">
 <head>
     <meta charset="utf-8" />

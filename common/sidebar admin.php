@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <div id="layoutSidenav_nav">
     <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
         <div class="sb-sidenav-menu">
@@ -41,7 +42,10 @@
         </div>
         <div class="sb-sidenav-footer">
             <div class="small">Accesso effettuato come:</div>
-            Nome Cognome (admin)
+            <?php echo $_SESSION['user_data']['nome'] .
+                ' ' .
+                $_SESSION['user_data']['cognome'] .
+                ' '; ?>
         </div>
     </nav>
 </div>

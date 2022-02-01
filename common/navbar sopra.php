@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (!isset($_SESSION['user_data'])) {
+    header('Location:  ../frontend/login.php');
+}
+?>
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <!-- Navbar Brand-->
     <a class="navbar-brand ps-3" href="../index.php">Meetup Planner</a>
@@ -15,9 +21,9 @@
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="">Profilo</a></li>
+                <li><a class="dropdown-item" href="../frontend/profilo utente.php">Profilo</a></li>
                 <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="">Logout</a></li>
+                <li><a class="dropdown-item" href="../backend/logout_back.php">Logout</a></li>
             </ul>
         </li>
     </ul>

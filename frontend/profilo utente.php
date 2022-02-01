@@ -18,7 +18,7 @@ $user_data = $_SESSION['user_data'];
         <main>
             <div class="conteiner-fluid pt-5 px-5">
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item"><a href="../index.html">Homepage</a></li>
+                    <li class="breadcrumb-item"><a href="../index.php">Homepage</a></li>
                     <li class="breadcrumb-item active">Profilo</li>
                 </ol>
                 <div class="row justify-content-start mb-4">
