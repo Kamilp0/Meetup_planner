@@ -63,7 +63,9 @@
                                         $invito['tema'] .
                                         '</td>
                                             <td>' .
-                                        $invito['organizzatore'] .
+                                        $invito['nome'] .
+                                        ' ' .
+                                        $invito['cognome'] .
                                         '</td>
                                             <td><button class="btn-sm btn-success">Conferma</button></td>
                                             <td><button class="btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#denyModal">Rifiuta</button></td>

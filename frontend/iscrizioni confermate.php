@@ -63,12 +63,17 @@ require '../backend/iscrizioni_confermate_back.php';
                                         $invito['tema'] .
                                         '</td>
                                             <td>' .
-                                        $invito['organizzatore'] .
+                                        $invito['nome'] .
+                                        ' ' .
+                                        $invito['cognome'] .
                                         '</td>
-                                            <td><a href="#link" type="button" class="btn btn-danger btn-sm">Annulla iscrizione</a></td>
+                                            <td>
+                                            <a href="../backend/annulla_iscrizione_back.php?id=' .
+                                        $invito['id_riunione'] .
+                                        '" type="submit" class="btn btn-danger btn-sm">Annulla iscrizione</a>
+                                            </td>
                                         </tr>';
                                 } ?>
-
                             </tbody>
                         </table>
                     </div>
