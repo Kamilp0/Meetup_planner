@@ -3,33 +3,32 @@
 <?php require '../common/head.html'; ?>
 <body class="sb-nav-fixed">
 
-<?php require '../common/navbar sopra.php'; ?>
+<?php
+require '../common/navbar sopra.php';
+require '../backend/iscrizioni_rifiutate_back.php';
+?>
 
 <div id="layoutSidenav">
 
-    <?php
-    require '../common/sidebar admin.php';
-    require '../backend/inviti_back.php';
-    ?>
+    <?php require '../common/sidebar admin.php'; ?>
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid pt-5 px-5" >
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item"><a href="../index.php">Homepage</a></li>
                     <li class="breadcrumb-item active">Calendario</li>
-                    <li class="breadcrumb-item active">Inviti</li>
+                    <li class="breadcrumb-item active">Iscrizioni rifiutate</li>
                 </ol>
                 <div class="row justify-content-start mb-4">
                     <div class="col-4">
-                        <h1 class="mt-4">Inviti</h1>
+                        <h1 class="mt-4">Iscrizioni rifiutate</h1>
                     </div>
                     <div class="col-4">
-                            <a href="iscrizioni%20confermate.php" type="button" class="btn btn-primary btn-lg" >Iscrizioni confermate</a>
-                            <a href="iscrizioni%20rifiutate.php" type="button" class="btn btn-primary btn-lg mt-3" >Iscrizioni rifiutate</a>
+                        <a href="inviti.php" type="button" class="btn btn-primary btn-lg" >Inviti</a>
                     </div>
                 </div>
                 <div class="card mb-4">
-                <div class="card-body">
+                    <div class="card-body">
                         <table class="table table-hover">
                             <thead>
                             <tr>
@@ -68,32 +67,15 @@
                                         ' ' .
                                         $invito['cognome'] .
                                         '</td>
-                                            <td><button class="btn-sm btn-success">Partecipa</button></td>
-                                            <td><button class="btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#denyModal">Rifiuta</button></td>
+                                            <td>
+                                            <a href="../backend/conferma_iscrizione_back.php?id=' .
+                                        $invito['id_riunione'] .
+                                        '" type="submit" class="btn btn-success btn-sm">Partecipa</a>
+                                            </td>
                                         </tr>';
                                 } ?>
                             </tbody>
                         </table>
-                    </div>
-                </div>
-                <div class="modal fade" id="denyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Fai sapere perché non parteciperai alla riunione:</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="form-floating mb-3">
-                                    <input class="form-control" id="inputText" type="text" placeholder="Motivazione" />
-                                    <label for="inputText">Motivazione</label>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
-                                <button type="button" class="btn btn-primary">Invia</button>
-                            </div>
-                        </div>
                     </div>
                 </div>
         </main>
