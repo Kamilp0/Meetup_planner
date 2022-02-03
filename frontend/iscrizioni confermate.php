@@ -24,58 +24,87 @@ require '../backend/iscrizioni_confermate_back.php';
                         <h1 class="mt-4">Iscrizioni confermate</h1>
                     </div>
                     <div class="col-4">
-                        <a href="inviti.php" type="button" class="btn btn-primary btn-lg" >Inviti</a>
+                        <!-- <a href="inviti.php" type="button" class="btn btn-primary btn-lg" >Inviti</a> -->
                     </div>
                 </div>
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <table class="table table-hover">
-                            <thead>
-                            <tr>
-                                <th scope="col">Data</th>
-                                <th scope="col">Ora</th>
-                                <th scope="col">Sala</th>
-                                <th scope="col">Durata</th>
-                                <th scope="col">Tema</th>
-                                <th scope="col">Organizzatore</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                                <?php while ($invito = $res->fetch_assoc()) {
-                                    echo '<tr>
-                                            <td>' .
-                                        $invito['data'] .
-                                        '</td>
-                                            <td>' .
-                                        $invito['ora'] .
-                                        '</td>
-                                            <td>' .
-                                        $invito['nome_sala'] .
-                                        ', ' .
-                                        $invito['dipartimento'] .
-                                        '</td>
-                                            <td>' .
-                                        $invito['durata_ore'] .
-                                        ' ' .
-                                        'ora/e' .
-                                        '</td>
-                                            <td>' .
-                                        $invito['tema'] .
-                                        '</td>
-                                            <td>' .
-                                        $invito['nome'] .
-                                        ' ' .
-                                        $invito['cognome'] .
-                                        '</td>
-                                            <td>
-                                            <a href="../backend/annulla_iscrizione_back.php?id=' .
-                                        $invito['id_riunione'] .
-                                        '" type="submit" class="btn btn-danger btn-sm">Annulla iscrizione</a>
-                                            </td>
-                                        </tr>';
-                                } ?>
-                            </tbody>
-                        </table>
+                    <?php
+                    $invito = $res->fetch_assoc();
+                    $id_riunione = -1;
+                    if ($invito == null) {
+                        echo '<p class="lead">Non hai ancora dato conferma a nessun evento.</p>';
+                    } else {
+                        echo '<div class="card mb-4">
+                                <div class="card-body"> 
+                                    <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Data</th>
+                                        <th scope="col">Ora</th>
+                                        <th scope="col">Sala</th>
+                                        <th scope="col">Durata</th>
+                                        <th scope="col">Tema</th>
+                                        <th scope="col">Organizzatore</th>
+                                    </tr>
+                                    </thead>';
+                        echo '<tbody>';
+                        while ($invito) {
+                            $id_riunione = $invito['id_riunione'];
+                            echo '<tr>
+                                <td>' .
+                                $invito['data'] .
+                                '</td>
+                                <td>' .
+                                $invito['ora'] .
+                                '</td>
+                                <td>' .
+                                $invito['nome_sala'] .
+                                ', ' .
+                                $invito['dipartimento'] .
+                                '</td>
+                                <td>' .
+                                $invito['durata_ore'] .
+                                ' ' .
+                                'ora/e' .
+                                '</td>
+                                <td>' .
+                                $invito['tema'] .
+                                '</td>
+                                <td>' .
+                                $invito['nome'] .
+                                ' ' .
+                                $invito['cognome'] .
+                                '</td>
+                                <td>
+                                <a class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#denyModal">Annulla iscrizione</a>
+                                </td>
+                        </tr>';
+                            $invito = $res->fetch_assoc();
+                        }
+                        echo '</tbody>
+                            </table>
+                        </div>
+                    </div>';
+                    }
+                    ?>
+                <div class="modal fade" id="denyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Fai sapere perché non parteciperai alla riunione:</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <form action="../backend/annulla_iscrizione_back.php?id=<?php echo $id_riunione; ?>&from=1" method="POST">
+                            <div class="modal-body">
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" name="motivazione" id="inputText" type="text" placeholder="Motivazione" />
+                                    <label for="inputText">Motivazione</label>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <input type="submit" class="btn btn-primary" value="Invia"/>
+                            </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
         </main>

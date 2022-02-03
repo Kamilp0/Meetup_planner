@@ -23,6 +23,10 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-calendar-check"></i></div>
                             Iscrizioni confermate
                         </a>
+                        <a class="nav-link" href="../frontend/iscrizioni%20rifiutate.php">
+                            <div class="sb-nav-link-icon"><i class="fas fa-calendar-times"></i></div>
+                            Iscrizioni<br>rifiutate
+                        </a>
                     </nav>
                 </div>
                 <a class="nav-link" href="../frontend/le%20mie%20riunioni.php">

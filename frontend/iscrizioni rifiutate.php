@@ -24,60 +24,68 @@ require '../backend/iscrizioni_rifiutate_back.php';
                         <h1 class="mt-4">Iscrizioni rifiutate</h1>
                     </div>
                     <div class="col-4">
-                        <a href="inviti.php" type="button" class="btn btn-primary btn-lg" >Inviti</a>
+                        <!-- <a href="inviti.php" type="button" class="btn btn-primary btn-lg" >Inviti</a> -->
                     </div>
                 </div>
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <table class="table table-hover">
-                            <thead>
-                            <tr>
-                                <th scope="col">Data</th>
-                                <th scope="col">Ora</th>
-                                <th scope="col">Sala</th>
-                                <th scope="col">Durata</th>
-                                <th scope="col">Tema</th>
-                                <th scope="col">Organizzatore</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                                <?php while ($invito = $res->fetch_assoc()) {
-                                    echo '<tr>
-                                            <td>' .
-                                        $invito['data'] .
-                                        '</td>
-                                            <td>' .
-                                        $invito['ora'] .
-                                        '</td>
-                                            <td>' .
-                                        $invito['nome_sala'] .
-                                        ', ' .
-                                        $invito['dipartimento'] .
-                                        '</td>
-                                            <td>' .
-                                        $invito['durata_ore'] .
-                                        ' ' .
-                                        'ora/e' .
-                                        '</td>
-                                            <td>' .
-                                        $invito['tema'] .
-                                        '</td>
-                                            <td>' .
-                                        $invito['nome'] .
-                                        ' ' .
-                                        $invito['cognome'] .
-                                        '</td>
-                                            <td>
-                                            <a href="../backend/conferma_iscrizione_back.php?id=' .
-                                        $invito['id_riunione'] .
-                                        '" type="submit" class="btn btn-success btn-sm">Partecipa</a>
-                                            </td>
-                                        </tr>';
-                                } ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                <?php
+                $invito = $res->fetch_assoc();
+                if ($invito == null) {
+                    echo '<p class="lead">Non sono presenti eventi a cui non parteciperai.</p>';
+                } else {
+                    echo '<div class="card mb-4">
+                                <div class="card-body"> 
+                                    <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Data</th>
+                                        <th scope="col">Ora</th>
+                                        <th scope="col">Sala</th>
+                                        <th scope="col">Durata</th>
+                                        <th scope="col">Tema</th>
+                                        <th scope="col">Organizzatore</th>
+                                    </tr>
+                                    </thead>';
+                    echo '<tbody>';
+                    while ($invito) {
+                        echo '<tr>
+                                <td>' .
+                            $invito['data'] .
+                            '</td>
+                                <td>' .
+                            $invito['ora'] .
+                            '</td>
+                                <td>' .
+                            $invito['nome_sala'] .
+                            ', ' .
+                            $invito['dipartimento'] .
+                            '</td>
+                                <td>' .
+                            $invito['durata_ore'] .
+                            ' ' .
+                            'ora/e' .
+                            '</td>
+                                <td>' .
+                            $invito['tema'] .
+                            '</td>
+                                <td>' .
+                            $invito['nome'] .
+                            ' ' .
+                            $invito['cognome'] .
+                            '</td>
+                                <td>
+                                <a href="../backend/conferma_iscrizione_back.php?id=' .
+                            $invito['id_riunione'] .
+                            '&from=1" type="submit" class="btn btn-success btn-sm">Partecipa</a>
+                                </td>
+                        </tr>';
+                        $invito = $res->fetch_assoc();
+                    }
+                    echo '</tbody>
+                            </table>
+                        </div>
+                    </div>';
+                }
+                ?>
         </main>
 
         <?php require '../common/footer.html'; ?>
