@@ -33,15 +33,6 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-chalkboard-teacher"></i></div>
                     Le mie riunioni
                 </a>
-                <div class="sb-sidenav-menu-heading">Amministrazione</div>
-                <a class="nav-link" href="../frontend/gestione%20utenti.php">
-                    <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
-                    Gestione utenti
-                </a>
-                <a class="nav-link" href="../frontend/gestione%20sale.php">
-                    <div class="sb-nav-link-icon"><i class="far fa-building"></i></div>
-                    Gestione sale
-                </a>
             </div>
         </div>
         <div class="sb-sidenav-footer">
@@ -49,8 +40,7 @@
             <?php echo $_SESSION['user_data']['nome'] .
                 ' ' .
                 $_SESSION['user_data']['cognome'] .
-                ' ' .
-                '(admin)'; ?>
+                ' '; ?>
         </div>
     </nav>
 </div>

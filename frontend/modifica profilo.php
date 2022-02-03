@@ -12,7 +12,9 @@ $user_data = $_SESSION['user_data'];
 
 <div id="layoutSidenav">
 
-    <?php require '../common/sidebar admin.php'; ?>
+    <?php $_SESSION['user_data']['ruolo'] == 'direttore'
+        ? require '../common/sidebar admin.php'
+        : require '../common/sidebar user.php'; ?>
 
     <div id="layoutSidenav_content">
         <main>

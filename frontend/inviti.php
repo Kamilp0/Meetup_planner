@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php require '../common/head.html'; ?>
+<?php
+session_start();
+require '../common/head.html';
+?>
 <body class="sb-nav-fixed">
 
 <?php require '../common/navbar sopra.php'; ?>
@@ -8,7 +11,9 @@
 <div id="layoutSidenav">
 
     <?php
-    require '../common/sidebar admin.php';
+    $_SESSION['user_data']['ruolo'] == 'direttore'
+        ? require '../common/sidebar admin.php'
+        : require '../common/sidebar user.php';
     require '../backend/inviti_back.php';
     ?>
     <div id="layoutSidenav_content">

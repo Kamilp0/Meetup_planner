@@ -3,7 +3,13 @@
 <?php require '../common/head.html'; ?>
 <body class="sb-nav-fixed">
 
-<?php require '../common/navbar sopra.php'; ?>
+<?php
+session_start();
+if ($_SESSION['user_data']['ruolo'] != 'direttore') {
+    header('Location: ../index.php');
+}
+require '../common/navbar sopra.php';
+?>
 
 <div id="layoutSidenav">
 
