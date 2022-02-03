@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php require '../common/head.html'; ?>
+<?php
+session_start();
+if ($_SESSION['user_data']['ruolo'] != 'direttore') {
+    header('Location: ../index.php');
+}
+require '../common/head.html';
+?>
 <body class="sb-nav-fixed">
 
 <?php require '../common/navbar sopra.php'; ?>

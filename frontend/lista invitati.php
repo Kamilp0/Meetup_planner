@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
+session_start();
 $id_riunione = $_GET['id_riunione'];
 
 require '../common/head.html';
@@ -11,7 +12,9 @@ require '../common/head.html';
 
 <div id="layoutSidenav">
 
-    <?php require '../common/sidebar admin.php'; ?>
+    <?php $_SESSION['user_data']['ruolo'] == 'direttore'
+        ? require '../common/sidebar admin.php'
+        : require '../common/sidebar user.php'; ?>
 
     <div id="layoutSidenav_content">
         <main>

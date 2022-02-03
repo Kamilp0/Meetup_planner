@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php require '../common/head.html'; ?>
+<?php
+session_start();
+require '../common/head.html';
+?>
 <body class="sb-nav-fixed">
 
 <?php require '../common/navbar sopra.php'; ?>
 
 <div id="layoutSidenav">
 
-    <?php require '../common/sidebar admin.php'; ?>
+    <?php
+    $_SESSION['user_data']['ruolo'] == 'direttore'
+        ? require '../common/sidebar admin.php'
+        : require '../common/sidebar user.php';
+    require '../backend/inviti_back.php';
+    ?>
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid pt-5 px-5" >
@@ -20,38 +28,71 @@
                     <div class="col-4">
                         <h1 class="mt-4">Inviti</h1>
                     </div>
-                    <div class="col-4">
-                        <a href="iscrizioni%20confermate.php" type="button" class="btn btn-primary btn-lg" >Iscrizioni confermate</a>
-                    </div>
+                    <!-- <div class="col-4">
+                            <a href="iscrizioni%20confermate.php" type="button" class="btn btn-primary btn-lg" >Iscrizioni confermate</a>
+                            <a href="iscrizioni%20rifiutate.php" type="button" class="btn btn-primary btn-lg mt-3" >Iscrizioni rifiutate</a>
+                    </div> -->
                 </div>
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <table class="table table-hover">
-                            <thead>
-                            <tr>
-                                <th scope="col">Data</th>
-                                <th scope="col">Ora</th>
-                                <th scope="col">Sala</th>
-                                <th scope="col">Durata</th>
-                                <th scope="col">Tema</th>
-                                <th scope="col">Organizzatore</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>23 dicembre 2021</td>
-                                <td>10:00</td>
-                                <td>Alfa, Galileo</td>
-                                <td>2 ore</td>
-                                <td>Bilancio mesi di novembre e dicembre</td>
-                                <td>basilio.russo@hotmail.com</td>
-                                <td><button class="btn-sm btn-success">Conferma</button></td>
-                                <td><button class="btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#denyModal">Rifiuta</button></td>
-                            </tr>
-                            </tbody>
-                        </table>
+                <?php
+                $invito = $res->fetch_assoc();
+                $id_riunione = -1;
+                if ($invito == null) {
+                    echo '<p class="lead">Non sono presenti inviti in sospeso.</p>';
+                } else {
+                    echo '<div class="card mb-4">
+                            <div class="card-body"> 
+                                <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Data</th>
+                                    <th scope="col">Ora</th>
+                                    <th scope="col">Sala</th>
+                                    <th scope="col">Durata</th>
+                                    <th scope="col">Tema</th>
+                                    <th scope="col">Organizzatore</th>
+                                </tr>
+                                </thead>';
+                    echo '<tbody>';
+                    while ($invito) {
+                        $id_riunione = $invito['id_riunione'];
+                        echo '<tr>
+                            <td>' .
+                            $invito['data'] .
+                            '</td>
+                            <td>' .
+                            $invito['ora'] .
+                            '</td>
+                            <td>' .
+                            $invito['nome_sala'] .
+                            ', ' .
+                            $invito['dipartimento'] .
+                            '</td>
+                            <td>' .
+                            $invito['durata_ore'] .
+                            ' ' .
+                            'ora/e' .
+                            '</td>
+                            <td>' .
+                            $invito['tema'] .
+                            '</td>
+                            <td>' .
+                            $invito['nome'] .
+                            ' ' .
+                            $invito['cognome'] .
+                            '</td>
+                                <td><a href="../backend/conferma_iscrizione_back.php?id=' .
+                            $invito['id_riunione'] .
+                            '" type="submit" class="btn btn-success btn-sm">Partecipa</a></td>
+                                <td><a class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#denyModal">Rifiuta</a></td>
+                            </tr>';
+                        $invito = $res->fetch_assoc();
+                    }
+                    echo '</tbody>
+                    </table>
                     </div>
-                </div>
+                </div>';
+                }
+                ?>
                 <div class="modal fade" id="denyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -59,22 +100,17 @@
                                 <h5 class="modal-title" id="exampleModalLabel">Fai sapere perché non parteciperai alla riunione:</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
+                            <form action="../backend/annulla_iscrizione_back.php?id=<?php echo $id_riunione; ?>" method="POST">
                             <div class="modal-body">
-<!--                                <div class="alert alert-dark" role="alert">-->
-<!--                                    <div class="form-check mb-3">-->
-<!--                                        <input class="form-check-input" id="utenteautorizzato" type="checkbox" />-->
-<!--                                        <label class="form-check-label" for="utenteautorizzato">Autorizza l'utente a organizzare riunioni</label>-->
-<!--                                    </div>-->
-<!--                                </div>-->
                                 <div class="form-floating mb-3">
-                                    <input class="form-control" id="inputText" type="text" placeholder="Motivazione" />
+                                    <input class="form-control" name="motivazione" id="inputText" type="text" placeholder="Motivazione" />
                                     <label for="inputText">Motivazione</label>
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
-                                <button type="button" class="btn btn-primary">Invia</button>
+                                <input type="submit" class="btn btn-primary" value="Invia"/>
                             </div>
+                            </form>
                         </div>
                     </div>
                 </div>

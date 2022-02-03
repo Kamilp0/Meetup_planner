@@ -9,7 +9,7 @@
     />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Login - SB Admin</title>
+    <title>Login</title>
     <link href="../css/styles.css" rel="stylesheet" />
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
@@ -28,13 +28,14 @@
                     <h3 class="text-center font-weight-light my-4">Login</h3>
                   </div>
                   <div class="card-body">
-                    <form>
+                    <form action="../backend/login_back.php" method="POST">
                       <div class="form-floating mb-3">
                         <input
                           class="form-control"
                           id="inputEmail"
                           type="email"
-                          placeholder="name@example.com"
+                          name="email"
+                          placeholder="prova@email.com"
                         />
                         <label for="inputEmail">Email</label>
                       </div>
@@ -43,42 +44,33 @@
                           class="form-control"
                           id="inputPassword"
                           type="password"
+                          name="password"
                           placeholder="Password"
                         />
                         <label for="inputPassword">Password</label>
                       </div>
-                      <div class="form-check mb-3">
-                        <input
-                          class="form-check-input"
-                          id="inputRememberPassword"
-                          type="checkbox"
-                          value=""
-                        />
-                        <label
-                          class="form-check-label"
-                          for="inputRememberPassword"
-                        >
-                          Ricorda la password
-                        </label>
-                      </div>
+
+                        <?php
+                        session_start();
+
+                        if (isset($_SESSION['auth_ok'])) {
+                            if ($_SESSION['auth_ok']) {
+                                header('Location: ../index.php');
+                            } else {
+                                //handle wrong credentials
+                                echo 'Wrong credentials';
+                            }
+                        }
+                        ?>
                       <div
-                        class="d-flex align-items-center justify-content-between mt-4 mb-0"
+                        class="d-flex align-items-center justify-content-between mt-8 mb-0"
                         style="padding-top: 24px; text-align: center;"
                       >
-                        <!--                                                <a class="small" href="password.html">Forgot Password?</a>-->
-                        <a
-                          class="btn btn-primary"
-                          href="index.html"
-                          style="margin: auto;"
-                        >
-                          Accedi
-                        </a>
+                      <input class="btn btn-primary" style="margin:auto" type="submit" value="Accedi"></input>
                       </div>
                     </form>
                   </div>
-                  <div class="card-footer text-center py-3">
-                    <!--                                        <div class="small"><a href="register.html">Need an account? Sign up!</a></div>-->
-                  </div>
+                  <div class="card-footer text-center py-3"></div>
                 </div>
               </div>
             </div>
@@ -104,6 +96,7 @@
         </footer>
       </div>
     </div>
+   
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       crossorigin="anonymous"

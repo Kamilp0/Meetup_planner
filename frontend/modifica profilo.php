@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php require '../common/head.html'; ?>
+<?php
+require '../common/head.html';
+session_start();
+$user_data = $_SESSION['user_data'];
+?>
 
 <body class="sb-nav-fixed">
 
@@ -8,14 +12,15 @@
 
 <div id="layoutSidenav">
 
-    <?php require '../common/sidebar admin.php'; ?>
+    <?php $_SESSION['user_data']['ruolo'] == 'direttore'
+        ? require '../common/sidebar admin.php'
+        : require '../common/sidebar user.php'; ?>
 
     <div id="layoutSidenav_content">
         <main>
             <div class="conteiner-fluid pt-5 px-5">
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item"><a href="../index.php">Homepage</a></li>
-                    <!--                    <li class="breadcrumb-item"><a href="gestione utenti.php">Gestione utenti</a></li>-->
                     <li class="breadcrumb-item active">Profilo</li>
                 </ol>
                 <div class="row justify-content-start mb-4">
@@ -23,35 +28,43 @@
                         <h1 class="mt-4">Profilo utente</h1>
                     </div>
                 </div>
-                <form>
+                <form action="../backend/modifica_profilo_back.php" method="POST">
                     <div class="row">
                         <div class="col d-flex flex-column justify-content-evenly">
                             <div class="p-2 d-flex flex-row">
                                 <label for="nome" class="col-sm-2 col-form-label">Nome:</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" value="Basilio">
+                                    <input type="text" name="name" class="form-control" value=<?php echo $user_data[
+                                        'nome'
+                                    ]; ?>>
                                 </div>
                             </div>
                             <div class="p-2 d-flex flex-row justify-content-evenly">
                                 <label for="Cognome" class="col-sm-2 col-form-label" >Cognome:</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" value="Russo">
+                                    <input type="text" name="surname" class="form-control" value=<?php echo $user_data[
+                                        'cognome'
+                                    ]; ?>>
                                 </div>
                             </div>
                             <div class="p-2 d-flex flex-row">
                                 <label for="nome" class="col-sm-2 col-form-label">Email:</label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" value="basilio.russo@email.com">
+                                    <input type="email" name="email" class="form-control" value=<?php echo $user_data[
+                                        'email'
+                                    ]; ?>>
                                 </div>
                             </div>
                             <div class="p-2 d-flex flex-row justify-content-evenly">
                                 <label for="Cognome" class="col-sm-2 col-form-label" >Password:</label>
                                 <div class="col-sm-10">
-                                    <input type="password" class="form-control" value="password">
+                                    <input type="password" name="password"  class="form-control" value=<?php echo $user_data[
+                                        'password'
+                                    ]; ?>>
                                 </div>
                             </div>
                             <div class="p-2 ">
-                                <a href="profilo%20utente.php" class="btn btn-primary" role="button">Salva</a>
+                                <input type="submit" value="Salva" class="btn btn-primary"/>
                             </div>
                         </div>
                         <div class="col">
