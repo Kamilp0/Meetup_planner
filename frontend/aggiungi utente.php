@@ -4,7 +4,6 @@
 <body class="sb-nav-fixed">
 
 <?php require '../common/navbar sopra.php'; ?>
-
 <div id="layoutSidenav">
 
     <?php require '../common/sidebar admin.php'; ?>
@@ -19,20 +18,20 @@
                 </ol>
                 <div class="row justify-content-start mb-4">
                     <div class="col-4">
-                        <h1 class="mt-4">Aggiungi utente</h1>
+                        <h1 class="mt-4">Aggiungi pizza</h1>
                     </div>
                 </div>
-                <form action="../backend/nuovoutente_back.php" method="post">
+                <form name="nuovoutente" action="../backend/nuovoutente_back.php" method="post">
                     <div class="row mb-3">
                         <label for="nome" class="col-sm-2 col-form-label">Nome:</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="nome" size="30">
+                            <input type="text" class="form-control" name="nome" size="30" required>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="cognome" class="col-sm-2 col-form-label">Cognome:</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="cognome" size="30">
+                            <input type="text" class="form-control" name="cognome" size="30" required>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -111,7 +110,7 @@
                             </div>
                         </div>
                     </fieldset>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="aggiungiutente_check()">
                         AGGIUNGI
                     </button>
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -149,6 +148,7 @@
 
     </div>
 </div>
+<script src="../js/input_check.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="../js/scripts.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
