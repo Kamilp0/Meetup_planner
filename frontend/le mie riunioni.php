@@ -84,7 +84,6 @@ require '../backend/lista_riunioni_back.php';
                     </div>
                 </div>';
                 }
-                $dbc->close();
                 ?>
                 <div id="riunionisvolte" class="row justify-content-start mb-4">
                     <div class="col-4">
@@ -94,7 +93,13 @@ require '../backend/lista_riunioni_back.php';
                         <h4  class="mt-4"><a href="#top">Torna su</a></h4>
                     </div>
                 </div>
-                <div class="card mb-4">
+                <?php
+                require '../backend/riunioni_svolte_back.php';
+                $riunione_svolta = $res->fetch_assoc();
+                if ($riunione_svolta == null) {
+                    echo '<p class="lead">Non sono presenti riunioni già svolte.</p>';
+                } else {
+                    echo '<div class="card mb-4">
                     <div class="card-body">
                         <table class="table table-hover">
                             <thead>
@@ -107,19 +112,36 @@ require '../backend/lista_riunioni_back.php';
                                 <th scope="col">Invitati</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody>';
+                    while ($riunione_svolta) {
+                        echo '
                             <tr>
-                                <td>3 maggio 2021</td>
-                                <td>08:30</td>
-                                <td>Beta, Newton</td>
-                                <td>4 ore</td>
-                                <td>Corso di aggiornamento per manutentori</td>
-                                <td><a href="lista%20invitati.php?id_riunione=62254">visualizza la lista degli invitati</a></td>
-                            </tr>
-                            </tbody>
+                                <td>' .
+                            $riunione_svolta['data'] .
+                            '</td>
+                                <td>' .
+                            $riunione_svolta['ora'] .
+                            '</td>
+                                <td>' .
+                            $riunione_svolta['nome_sala'] .
+                            '</td>
+                                <td>' .
+                            $riunione_svolta['durata_ore'] .
+                            ' ora/e' .
+                            '</td>
+                                <td>' .
+                            $riunione_svolta['tema'] .
+                            '</td>
+                                <td><a href="lista%20invitati.php?id_riunione=46772">visualizza la lista degli invitati</a></td>
+                            </tr>';
+                        $riunione_svolta = $res->fetch_assoc();
+                    }
+                    echo '</tbody>
                         </table>
                     </div>
-                </div>
+                </div>';
+                }
+                ?>
             </div>
         </main>
 
