@@ -2,7 +2,11 @@
 <html lang="en">
 <?php
 session_start();
+if ($_SESSION['user_data']['data_autorizzazione'] == null) {
+    header('Location: ../index.php');
+}
 require '../common/head.html';
+require '../backend/lista_riunioni_back.php';
 ?>
 <body class="sb-nav-fixed">
 
@@ -31,7 +35,12 @@ require '../common/head.html';
                         <h4  class="mt-4"><a href="#riunionisvolte">Riunioni già svolte</a></h4>
                     </div>
                 </div>
-                <div class="card mb-4">
+                <?php
+                $riunione = $res->fetch_assoc();
+                if ($riunione == null) {
+                    echo '<p class="lead">Non hai organizzato alcuna riunione.</p>';
+                } else {
+                    echo '<div class="card mb-4">
                     <div class="card-body">
                         <table class="table table-hover">
                             <thead>
@@ -44,20 +53,39 @@ require '../common/head.html';
                                 <th scope="col">Invitati</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody>';
+                    while ($riunione) {
+                        echo '
                             <tr>
-                                <td>13/02/2022</td>
-                                <td>10:30</td>
-                                <td>Alfa, Newton</td>
-                                <td>1 ora</td>
-                                <td>Presentazione seconda consegna PWEB2021</td>
+                                <td>' .
+                            $riunione['data'] .
+                            '</td>
+                                <td>' .
+                            $riunione['ora'] .
+                            '</td>
+                                <td>' .
+                            $riunione['nome_sala'] .
+                            '</td>
+                                <td>' .
+                            $riunione['durata_ore'] .
+                            ' ora/e' .
+                            '</td>
+                                <td>' .
+                            $riunione['tema'] .
+                            '</td>
                                 <td><a href="lista%20invitati.php?id_riunione=46772">visualizza la lista degli invitati</a></td>
                                 <td><a href="" type="button" class="btn btn-primary btn-sm">Modifica informazioni</a></td>
-                            </tr>
-                            </tbody>
+                            </tr>';
+
+                        $riunione = $res->fetch_assoc();
+                    }
+                    echo '</tbody>
                         </table>
                     </div>
-                </div>
+                </div>';
+                }
+                $dbc->close();
+                ?>
                 <div id="riunionisvolte" class="row justify-content-start mb-4">
                     <div class="col-4">
                         <h1 class="mt-4">Riunioni svolte</h1>

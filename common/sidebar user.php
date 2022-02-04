@@ -29,10 +29,14 @@
                         </a>
                     </nav>
                 </div>
-                <a class="nav-link" href="../frontend/le%20mie%20riunioni.php">
+                <?php if (
+                    $_SESSION['user_data']['data_autorizzazione'] != null
+                ) {
+                    echo '<a class="nav-link" href="../frontend/le%20mie%20riunioni.php">
                     <div class="sb-nav-link-icon"><i class="fas fa-chalkboard-teacher"></i></div>
                     Le mie riunioni
-                </a>
+                    </a>';
+                } ?>
             </div>
         </div>
         <div class="sb-sidenav-footer">
