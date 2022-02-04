@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php require '../common/head.html'; ?>
+<?php
+session_start();
+require '../common/head.html';
+?>
 <body class="sb-nav-fixed">
 
 <?php require '../common/navbar sopra.php'; ?>
@@ -57,7 +60,7 @@
                     }
 
                     if (empty($missingdata)) {
-                        $organizzatore = 'russobasilio@sth.com'; //qui verrà salvata in una variabile la email dell'utente che sta usando l'applicativo
+                        $organizzatore = $_SESSION['user_data']['email'];
                         require_once 'mysql_connect_back.php';
 
                         $lista_id = [];

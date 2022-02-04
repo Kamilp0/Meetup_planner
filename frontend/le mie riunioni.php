@@ -73,7 +73,9 @@ require '../backend/lista_riunioni_back.php';
                                 <td>' .
                             $riunione['tema'] .
                             '</td>
-                                <td><a href="lista%20invitati.php?id_riunione=46772">visualizza la lista degli invitati</a></td>
+                                <td><a href="lista%20invitati.php?id_riunione=' .
+                            $riunione['id_riunione'] .
+                            '">visualizza la lista degli invitati</a></td>
                                 <td><a href="" type="button" class="btn btn-primary btn-sm">Modifica informazioni</a></td>
                             </tr>';
 
@@ -132,7 +134,9 @@ require '../backend/lista_riunioni_back.php';
                                 <td>' .
                             $riunione_svolta['tema'] .
                             '</td>
-                                <td><a href="lista%20invitati.php?id_riunione=46772">visualizza la lista degli invitati</a></td>
+                                <td><a href="lista%20invitati.php?id_riunione=' .
+                            $riunione_svolta['id_riunione'] .
+                            '">visualizza la lista degli invitati</a></td>
                             </tr>';
                         $riunione_svolta = $res->fetch_assoc();
                     }

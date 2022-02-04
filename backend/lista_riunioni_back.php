@@ -7,7 +7,7 @@ $query =
     'SELECT * FROM riunione WHERE organizzatore=\'' .
     $_SESSION['user_data']['email'] .
     '\'' .
-    ' AND riunione.data > CURRENT_DATE OR  riunione.data = CURRENT_DATE AND riunione.ora > CURRENT_TIME';
+    ' AND (riunione.data > CURRENT_DATE OR  riunione.data = CURRENT_DATE AND riunione.ora > CURRENT_TIME)';
 
 $res = $dbc->query($query);
 

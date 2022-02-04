@@ -1,10 +1,12 @@
 <?php
-
+session_start();
 require 'mysql_connect_back.php';
 
 $query =
-    'UPDATE invito SET stato_notifica=\'confermato\', motivazione=NULL WHERE id_riunione=\'' .
+    'UPDATE invito SET stato_notifica=\'confermato\', data_ultimo_aggiornamento=CURRENT_DATE ,motivazione=NULL WHERE id_riunione=\'' .
     $_GET['id'] .
+    '\' AND persona=\'' .
+    $_SESSION['user_data']['email'] .
     '\';';
 
 $res = $dbc->query($query);
