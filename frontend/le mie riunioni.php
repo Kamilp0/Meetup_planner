@@ -134,7 +134,7 @@ require '../backend/lista_riunioni_back.php';
                                 <td>' .
                             $riunione_svolta['tema'] .
                             '</td>
-                                <td><a href="lista%20invitati.php?id_riunione=' .
+                                <td><a href="lista%20invitati.php?hid=1&id_riunione=' .
                             $riunione_svolta['id_riunione'] .
                             '">visualizza la lista degli invitati</a></td>
                             </tr>';

@@ -29,7 +29,9 @@ require '../common/head.html';
                         <h1 class="mt-4">Invitati alla riunione: </h1>
                     </div>
                     <div class="col-2">
-                        <a href="invita.php" type="button" class="btn btn-primary btn-lg" >Aggiungi invitati</a>
+                        <?php if (!isset($_GET['hid'])) {
+                            echo '<a href="invita.php" type="button" class="btn btn-primary btn-lg" >Aggiungi invitati</a>';
+                        } ?>
                     </div>
                 </div>
                 <div class="row justify-content-start mb-4">
