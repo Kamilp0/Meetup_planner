@@ -30,13 +30,17 @@ require '../common/head.html';
                     </div>
                     <div class="col-2">
                         <?php if (!isset($_GET['hid'])) {
-                            echo '<a href="invita.php" type="button" class="btn btn-primary btn-lg" >Aggiungi invitati</a>';
+                            echo '<a href="invita.php?id=' .
+                                $id_riunione .
+                                '" type="button" class="btn btn-primary btn-lg" >Aggiungi invitati</a>';
                         } ?>
                     </div>
                 </div>
                 <div class="row justify-content-start mb-4">
                     <div class="col-4">
-                        <h4 class="mt-4 text-secondary">"tema riunione"</h4>
+                        <h4 class="mt-4 text-secondary"><?php echo $_POST[
+                            'tema_riunione'
+                        ]; ?></h4>
                     </div>
                 </div>
                 <table class="table table-hover">

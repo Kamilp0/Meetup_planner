@@ -50,7 +50,6 @@ require '../backend/lista_riunioni_back.php';
                                 <th scope="col">Sala</th>
                                 <th scope="col">Durata</th>
                                 <th scope="col">Tema</th>
-                                <th scope="col">Invitati</th>
                             </tr>
                             </thead>
                             <tbody>';
@@ -73,10 +72,17 @@ require '../backend/lista_riunioni_back.php';
                                 <td>' .
                             $riunione['tema'] .
                             '</td>
-                                <td><a href="lista%20invitati.php?id_riunione=' .
+                                <td>
+                                <form id="guests_list" action="lista%20invitati.php?id_riunione=' .
                             $riunione['id_riunione'] .
-                            '">visualizza la lista degli invitati</a></td>
-                                <td><a href="" type="button" class="btn btn-primary btn-sm">Modifica informazioni</a></td>
+                            '" method="POST">
+                                <input type="hidden" name="tema_riunione" value="' .
+                            $riunione['tema'] .
+                            '"/>
+                                <input class="btn btn-primary btn-sm" value="Lista invitati" type="submit"/>
+                                </form></td>
+                                <td><a href="" type="button" class="btn btn-primary btn-sm">Modifica informazioni</a>
+                                </td>
                             </tr>';
 
                         $riunione = $res->fetch_assoc();
@@ -87,6 +93,7 @@ require '../backend/lista_riunioni_back.php';
                 </div>';
                 }
                 ?>
+
                 <div id="riunionisvolte" class="row justify-content-start mb-4">
                     <div class="col-4">
                         <h1 class="mt-4">Riunioni svolte</h1>
