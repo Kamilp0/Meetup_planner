@@ -7,9 +7,13 @@ if ($_SESSION['user_data']['ruolo'] != 'direttore') {
 }
 require '../common/head.html';
 ?>
-<body class="sb-nav-fixed">
+<body id="body" class="sb-nav-fixed">
 
-<?php require '../common/navbar sopra.php'; ?>
+<?php
+
+require '../common/navbar sopra.php';
+
+?>
 <div id="layoutSidenav">
 
     <?php require '../common/sidebar admin.php'; ?>
@@ -24,32 +28,32 @@ require '../common/head.html';
                 </ol>
                 <div class="row justify-content-start mb-4">
                     <div class="col-4">
-                        <h1 class="mt-4">Aggiungi pizza</h1>
+                        <h1 class="mt-4">Aggiungi utente</h1>
                     </div>
                 </div>
                 <form name="nuovoutente" action="../backend/nuovoutente_back.php" method="post">
                     <div class="row mb-3">
-                        <label for="nome" class="col-sm-2 col-form-label">Nome:</label>
+                        <label id="label_nome" for="nome" class="col-sm-2">Nome:</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="nome" size="30" required>
+                            <input id="input_nome" onkeyup="checknome(this)" type="text" class="form-control" name="nome" size="30" >
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="cognome" class="col-sm-2 col-form-label">Cognome:</label>
+                        <label id="label_cognome" for="cognome" class="col-sm-2 col-form-label">Cognome:</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="cognome" size="30" required>
+                            <input id="input_cognome" onkeyup="checkcognome(this)" type="text" class="form-control" name="cognome" size="30" >
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="datadinascita" class="col-sm-2 col-form-label">Data di nascita:</label>
+                        <label id="label_data" for="datadinascita" class="col-sm-2 col-form-label">Data di nascita:</label>
                         <div class="col-sm-10">
-                            <input type="date" class="form-control" name="datadinascita">
+                            <input id="input_data" onchange="checkdata(this)" type="date" class="form-control" name="datadinascita">
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="email" class="col-sm-2 col-form-label">email:</label>
+                        <label id="label_email" for="email" class="col-sm-2 col-form-label">email:</label>
                         <div class="col-sm-10">
-                            <input type="email" class="form-control" name="email" size="30">
+                            <input id="input_email" onchange="checkemail(this)" type="email" class="form-control" name="email" size="30" >
                         </div>
                     </div>
                     <fieldset class="row mb-3">
@@ -116,7 +120,7 @@ require '../common/head.html';
                             </div>
                         </div>
                     </fieldset>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="aggiungiutente_check()">
+                    <button id="bottoneaggiungi" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" >
                         AGGIUNGI
                     </button>
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -140,7 +144,7 @@ require '../common/head.html';
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
-                                    <button type="submit" class="btn btn-primary" name="submit">Salva modifiche</button>
+                                    <button type="submit" data-bs-dismiss="modal" class="btn btn-primary" name="submit">Salva modifiche</button>
                                 </div>
                             </div>
                         </div>

@@ -28,11 +28,11 @@ require '../common/head.html';
                         <h1 class="mt-4">Aggiungi sala</h1>
                     </div>
                 </div>
-                <form action="../backend/nuovasala_back.php" method="post">
+                <form name="nuovasala" action="../backend/nuovasala_back.php" method="post">
                     <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label">Nome sala:</label>
+                        <label id="label_nomesala" class="col-sm-2 col-form-label">Nome sala:</label>
                         <div class="col-sm-10">
-                            <input type="text" name="nome" class="form-control">
+                            <input id="input_nome" type="text" name="nome" class="form-control" onkeyup="checknomesala(this)">
                         </div>
                     </div>
                     <fieldset class="row mb-3">
@@ -67,7 +67,7 @@ require '../common/head.html';
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label">Capienza:</label>
                         <div class="col-sm-10">
-                            <input type="number" name="capienza" class="form-control">
+                            <input type="number" min="0" name="capienza" class="form-control">
                         </div>
                     </div>
                     <fieldset class="row mb-3">
@@ -91,10 +91,10 @@ require '../common/head.html';
                             </div>
                         </div>
                     </fieldset>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-aule">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" >
                         AGGIUNGI
                     </button>
-                    <div class="modal fade" id="modal-aule" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -123,6 +123,7 @@ require '../common/head.html';
 
     </div>
     </div>
+        <script src="../js/input_check.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="../js/scripts.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
