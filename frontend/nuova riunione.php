@@ -97,13 +97,13 @@ require '../common/head.html';
                             </div>
                         </div>
                     </div>
-                    <div class="row mb-3">
+                    <!-- <div class="row mb-3">
                         <label class="col-sm-2 col-form-label">Invitati:</label>
                         <fieldset disabled class="col-sm-8">
                                 <input type="text" id="disabledTextInput" class="form-control" placeholder="da implementarsi bene bene in PHP. esempio: Basilio Russo, Gabriella Angelo + alrti 15">
                         </fieldset>
                         <a href="invita.php" class="col-sm-2">Aggiungi invitati</a>
-                    </div>
+                    </div> -->
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         AGGIUNGI
                     </button>
