@@ -13,10 +13,6 @@ require '../common/head.html';
         ? require '../common/sidebar admin.php'
         : require '../common/sidebar user.php'; ?>
     <script>
-        function invitaButtonClicked() {
-            document.getElementById('guests_form').submit()
-        }
-
         function showUsersByRole(role, id) {
             if (role == '') {
                 return
