@@ -8,9 +8,6 @@ $query =
     ');';
 $utenti = @mysqli_query($dbc, $query);
 
-echo '<form id="guests_form" action="../backend/invita_utenti_back.php?id=' .
-    $_GET['id'] .
-    '" method="POST">';
 while ($row = mysqli_fetch_array($utenti)) {
     echo '<tr><td>' .
         $row['nome'] .
@@ -35,6 +32,5 @@ while ($row = mysqli_fetch_array($utenti)) {
         '"/></td>
         </tr>';
 }
-echo '</form>';
 
 ?>

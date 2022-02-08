@@ -1,16 +1,18 @@
 <?php
 require_once 'mysql_connect_back.php';
 
-$query = 'SELECT * FROM persona WHERE ruolo=\'' . $_GET['q'] . '\'';
+$query =
+    'SELECT * FROM persona WHERE ruolo=\'' .
+    $_GET['q'] .
+    '\' AND persona.email NOT IN (SELECT invito.persona FROM invito WHERE invito.id_riunione=' .
+    $_GET['id'] .
+    ');';
 
 $res = $dbc->query($query);
 
 if (!$res) {
     echo 'Errore ' . $dbc->errno;
 } else {
-    echo '<form id="guests_form" action="../backend/invita_utenti_back.php?id=' .
-        $_GET['id'] .
-        '" method="POST">';
     while ($row = $res->fetch_assoc()) {
         echo '<tr><td>' .
             $row['nome'] .
@@ -32,9 +34,8 @@ if (!$res) {
             '</td>
         <td><input type="checkbox" name="checkbox[]" value="' .
             $row['email'] .
-            '" checked/></td>
+            '"/></td>
         </tr>';
     }
-    echo '</form>';
 }
 ?>
