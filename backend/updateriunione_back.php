@@ -14,52 +14,39 @@
             <div class="container-fluid pt-5 px-5">
                 <div class="row justify-content-start mb-4">
                     <div class="col-4">
-                        <h1 class="mt-4">Modifica utente</h1>
+                        <h1 class="mt-4">Modifica riunione</h1>
                     </div>
                 </div>
                 <?php
-                if (isset($_POST['update'])) {
+                if (isset($_POST['submit'])) {
                     require_once 'mysql_connect_back.php';
 
-                    if (isset($_POST['utenteautorizzato'])) {
-                        $admin = 'utentecheautorizza';
-                        $query =
-                            'UPDATE persona SET nome=\'' .
-                            $_POST['nome'] .
-                            '\', cognome=\'' .
-                            $_POST['cognome'] .
-                            '\', dipartimento=\'' .
-                            $_POST['dipartimento'] .
-                            '\', ruolo=\'' .
-                            $_POST['ruolo'] .
-                            '\', data_autorizzazione=NOW(), autorizzato_da=\'' .
-                            $admin .
-                            '\' WHERE email =\'' .
-                            $_POST['email'] .
-                            '\';';
-                    } else {
-                        $query =
-                            'UPDATE persona SET nome=\'' .
-                            $_POST['nome'] .
-                            '\', cognome=\'' .
-                            $_POST['cognome'] .
-                            '\', dipartimento=\'' .
-                            $_POST['dipartimento'] .
-                            '\', ruolo=\'' .
-                            $_POST['ruolo'] .
-                            '\', data_autorizzazione=NULL, autorizzato_da=NULL WHERE email =\'' .
-                            $_POST['email'] .
-                            '\';';
-                    }
-                    echo $query;
-                    //$esito = mysqli_query($dbc, $query);
+                    $query =
+                        'UPDATE riunione SET dipartimento=\'' .
+                        $_POST['dipartimento'] .
+                        '\', nome_sala=\'' .
+                        $_POST['sala'] .
+                        '\', data=\'' .
+                        $_POST['data'] .
+                        '\', ora=\'' .
+                        $_POST['ora'] .
+                        '\', tema=\'' .
+                        $_POST['tema'] .
+                        '\', durata_ore=' .
+                        $_POST['durata'] .
+                        ' WHERE id_riunione=' .
+                        $_POST['id'] .
+                        ';';
+
+                    //echo $query;
+                    $esito = mysqli_query($dbc, $query);
                     if ($esito == true) {
                         echo '
                                     <h4 class="alert alert-success">
                                         <i class="fas fa-check-circle"></i><strong>  Fatto!</strong> modifica eseguita con successo.
                                     </h4>
                                     <div class="row">
-                                        <a class="col-3" href="../frontend/gestione%20utenti.php">torna alla gestione degli utenti</a>
+                                        <a class="col-3" href="../frontend/le%20mie%20riunioni.php">torna alle mie riunioni</a>
                                         <a class="col-9" href="../index.html">homepage</a>
                                     </div>';
                     } else {

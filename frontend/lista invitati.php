@@ -38,9 +38,9 @@ require '../common/head.html';
                 </div>
                 <div class="row justify-content-start mb-4">
                     <div class="col-4">
-                        <h4 class="mt-4 text-secondary"><?php echo $_POST[
+                        <h4 class="mt-4 text-secondary"><?php if (isset($_POST['tema_riunione'])){ echo $_POST[
                             'tema_riunione'
-                        ]; ?></h4>
+                        ];} ?></h4>
                     </div>
                 </div>
                 <table class="table table-hover">

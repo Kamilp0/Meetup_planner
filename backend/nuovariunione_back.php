@@ -60,45 +60,52 @@ require '../common/head.html';
                     }
 
                     if (empty($missingdata)) {
-                        $organizzatore = $_SESSION['user_data']['email'];
-                        require_once 'mysql_connect_back.php';
 
-                        $lista_id = [];
-                        $aux_query = @mysqli_query(
-                            $dbc,
-                            'SELECT id_riunione FROM riunione WHERE 1'
-                        );
-                        while ($id_esistente = mysqli_fetch_array($aux_query)) {
-                            $lista_id[] = $id_esistente;
-                        }
-                        while (1) {
-                            $id_candidato = rand(10000, 99999);
-                            if (in_array($id_candidato, $lista_id) == false) {
-                                break;
+                        //controllo che l'aula non sia occupata all'ora selezionata
+                        require "controllosovrapposizioni_back.php";
+
+                        if ($riunione_sovrapposta==null){
+
+                            $organizzatore = $_SESSION['user_data']['email'];
+
+                            //generazione di un id_riunione casuale e unico
+                            $lista_id = [];
+                            require_once "mysql_connect_back.php";
+                            $aux_query = @mysqli_query(
+                                $dbc,
+                                'SELECT id_riunione FROM riunione WHERE 1'
+                            );
+                            while ($id_esistente = mysqli_fetch_array($aux_query)) {
+                                $lista_id[] = $id_esistente;
                             }
-                        }
+                            while (1) {
+                                $id_candidato = rand(10000, 99999);
+                                if (in_array($id_candidato, $lista_id) == false) {
+                                    break;
+                                }
+                            }
 
-                        $query =
-                            'INSERT INTO riunione (id_riunione, dipartimento, nome_sala, data, ora, tema, durata_ore, organizzatore) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
-                        $stmt = mysqli_prepare($dbc, $query);
-                        mysqli_stmt_bind_param(
-                            $stmt,
-                            'isssssis',
-                            $id_candidato,
-                            $dipartimento,
-                            $sala,
-                            $data,
-                            $ora,
-                            $tema,
-                            $durata,
-                            $organizzatore
-                        );
-                        mysqli_stmt_execute($stmt);
+                            $query =
+                                'INSERT INTO riunione (id_riunione, dipartimento, nome_sala, data, ora, tema, durata_ore, organizzatore) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+                            $stmt = mysqli_prepare($dbc, $query);
+                            mysqli_stmt_bind_param(
+                                $stmt,
+                                'isssssis',
+                                $id_candidato,
+                                $dipartimento,
+                                $sala,
+                                $data,
+                                $ora,
+                                $tema,
+                                $durata,
+                                $organizzatore
+                            );
+                            mysqli_stmt_execute($stmt);
 
-                        $affected_rows = mysqli_stmt_affected_rows($stmt);
+                            $affected_rows = mysqli_stmt_affected_rows($stmt);
 
-                        if ($affected_rows == 1) {
-                            echo '
+                            if ($affected_rows == 1) {
+                                echo '
                                     <h4 class="alert alert-success">
                                         <i class="fas fa-check-circle"></i><strong>  Fatto!</strong> riunione creata con successo.
                                     </h4>
@@ -106,17 +113,25 @@ require '../common/head.html';
                                         <a class="col-3" href="../frontend/le%20mie%20riunioni.php">torna alle mie riunioni</a>
                                         <a class="col-9" href="../index.html">homepage</a>
                                     </div>';
-                            mysqli_stmt_close($stmt);
-                            mysqli_close($dbc);
-                        } else {
-                            $ERRORI = mysqli_error($dbc);
-                            echo '
+                                mysqli_stmt_close($stmt);
+                                mysqli_close($dbc);
+                            } else {
+                                $ERRORI = mysqli_error($dbc);
+                                echo '
                                     <h4 class="alert alert-danger">
                                         <i class="fas fa-exclamation-circle"></i><strong>  C\'è stato un problema:</br></strong>';
-                            echo $ERRORI, '</h4>';
-                            mysqli_stmt_close($stmt);
-                            mysqli_close($dbc);
+                                echo $ERRORI, '</h4>';
+                                mysqli_stmt_close($stmt);
+                                mysqli_close($dbc);
+                            }
+                        } else {
+                            echo '                                   
+                                    <h4 class="alert alert-danger">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        <strong>  L\'aula è già occupata all\'orario selezionato:</br></br></strong>
+                                        ' . $riunione_sovrapposta['tema_rs'] . ', di ' . $riunione_sovrapposta['org_rs'] . ' ';
                         }
+
                     } else {
                         echo '                                    
                                     <h4 class="alert alert-danger">

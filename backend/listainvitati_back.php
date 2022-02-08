@@ -89,7 +89,11 @@ while ($row = mysqli_fetch_array($invitato)) {
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
-                    <a type="submit" href="../backend/deletesala_back.php" class="btn btn-danger">ELIMINA INVITATO</a>
+                    <a type="submit" href="../backend/deleteinvitato_back.php?id=' .
+                    $id_riunione .
+                    '&persona=' .
+                    $row['email'] .
+                    '" class="btn btn-danger">ELIMINA INVITATO</a>
                 </div>
             </div>
         </div>

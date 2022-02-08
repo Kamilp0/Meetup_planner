@@ -114,6 +114,7 @@ require '../common/navbar sopra.php';
 
                             <?php
                             require '../backend/listautenti_back.php';
+                            $count = 0;
 
                             while ($row = mysqli_fetch_array($utenti)) {
                                 $count++;

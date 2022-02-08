@@ -50,11 +50,16 @@ require '../common/head.html';
                                     <th scope="col">Durata</th>
                                     <th scope="col">Tema</th>
                                     <th scope="col">Organizzatore</th>
+                                    <th scope="col">Posti liberi</th>
                                 </tr>
                                 </thead>';
                     echo '<tbody>';
                     while ($invito) {
+
                         $id_riunione = $invito['id_riunione'];
+
+                        require '../backend/controllocapienza_back.php';
+
                         echo '<tr>
                             <td>' .
                             $invito['data'] .
@@ -80,9 +85,10 @@ require '../common/head.html';
                             ' ' .
                             $invito['cognome'] .
                             '</td>
-                                <td><a href="../backend/conferma_iscrizione_back.php?id=' .
-                            $invito['id_riunione'] .
-                            '" type="submit" class="btn btn-success btn-sm">Partecipa</a></td>
+                            <td' .
+                            $posti_liberi . '
+                            </td>
+                                <td' . $href . ' type="submit" class="btn ' . $colore . ' btn-sm">Partecipa</a></td>
                                 <td><a class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#denyModal">Rifiuta</a></td>
                             </tr>';
                         $invito = $res->fetch_assoc();

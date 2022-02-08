@@ -80,8 +80,11 @@ require '../backend/lista_riunioni_back.php';
                             $riunione['tema'] .
                             '"/>
                                 <input class="btn btn-primary btn-sm" value="Lista invitati" type="submit"/>
-                                </form></td>
-                                <td><a href="" type="button" class="btn btn-primary btn-sm">Modifica informazioni</a>
+                                </form>
+                                </td>
+                                <td><a href="modifica%20riunione.php?id=' .
+                                $riunione['id_riunione'] .
+                                '" type="button" class="btn btn-primary btn-sm">Modifica informazioni</a>
                                 </td>
                             </tr>';
 
