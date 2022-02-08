@@ -5,7 +5,6 @@ session_start();
 require '../common/head.html';
 ?>
 <body class="sb-nav-fixed">
-
 <?php require '../common/navbar sopra.php'; ?>
 
 <div id="layoutSidenav">
@@ -13,6 +12,26 @@ require '../common/head.html';
     <?php $_SESSION['user_data']['ruolo'] == 'direttore'
         ? require '../common/sidebar admin.php'
         : require '../common/sidebar user.php'; ?>
+    <script>
+        function showUsersByRole(role, id) {
+            if (role == '') {
+                return
+            } else {
+                let xmlhttp = new XMLHttpRequest()
+                xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById('usersTable').innerHTML = this.responseText
+                }
+                }
+                xmlhttp.open(
+                'GET',
+                '../backend/utenti_filtro_ruoli.php?q=' + role + '&id=' + id,
+                true,
+                )
+                xmlhttp.send()
+            }
+        }
+    </script>
 
     <div id="layoutSidenav_content">
         <main>
@@ -34,7 +53,16 @@ require '../common/head.html';
                         } else {
                             $ordine = 'cognome';
                         } ?>
-                        <!--  INSERIRE QUI L'EVENTUALE FORM DI ORDINAMENTO -->
+                        <div class="row justify-content-md-center">
+                            <form>
+                                <select name="ruolo" onchange="showUsersByRole(this.value, <?php echo $_GET[
+                                    'id'
+                                ]; ?>)">
+                                    <option value="">Seleziona per ruolo:</option>
+                                    <?php require '../backend/lista_ruoli_back.php'; ?>
+                                </select>
+                            </form>
+                        </div>
                     </div>
                 </div>
                 <div class="card mb-4">
@@ -50,49 +78,22 @@ require '../common/head.html';
                                 <th scope="col">Ruolo</th>
                             </tr>
                             </thead>
-
-                            <tbody>
-
-                            <?php
-                            $id_riunione = $_GET['id'];
-                            require '../backend/listautenti_back.php';
-                            echo '<form id="guests_form" action="../backend/invita_utenti_back.php?id=' .
-                                $_GET['id'] .
-                                '" method="POST">';
-                            while ($row = mysqli_fetch_array($utenti)) {
-                                echo '<tr><td>' .
-                                    $row['nome'] .
-                                    '</td><td>' .
-                                    $row['cognome'] .
-                                    '</td><td>' .
-                                    $row['data_nascita'] .
-                                    '</td>';
-                                if (isset($row['data_autorizzazione'])) {
-                                    echo '<td class="text-success"><i class="fas fa-user-check"></i>  <strong>' .
-                                        $row['email'] .
-                                        '</strong></td><td>';
-                                } else {
-                                    echo '<td>' . $row['email'] . '</td><td>';
-                                }
-                                echo $row['dipartimento'] .
-                                    '</td><td>' .
-                                    $row['ruolo'] .
-                                    '</td>
-                                    <td>                                    <input type="checkbox" name="checkbox[]" value="' .
-                                    $row['email'] .
-                                    '"/></td>
-                                    </tr>';
-                            }
-                            echo '</form>';
-                            ?>
-                            </tbody>
+                            <form id="guests_form" action="../backend/invita_utenti_back.php?id=<?php echo $_GET[
+                                'id'
+                            ]; ?>" method="POST">
+                                <tbody id="usersTable">
+                                    <?php
+                                    $id_riunione = $_GET['id'];
+                                    require '../backend/listautenti_back.php';
+                                    ?>
+                                </tbody>
+                            </form>
                         </table>
                     </div>
                 </div>
             </div>
         </main>
         <?php require '../common/footer.html'; ?>
-
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
