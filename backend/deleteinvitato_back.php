@@ -14,7 +14,7 @@
             <div class="container-fluid pt-5 px-5">
                 <div class="row justify-content-start mb-4">
                     <div class="col-4">
-                        <h1 class="mt-4">Elimina sala</h1>
+                        <h1 class="mt-4">Elimina invitato</h1>
                     </div>
                 </div>
                 <?php
