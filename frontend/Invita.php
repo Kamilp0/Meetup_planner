@@ -34,6 +34,9 @@ require '../common/head.html';
                         } else {
                             $ordine = 'cognome';
                         } ?>
+                        <div class="row justify-content-md-center">
+                            
+                        </div>
                         <!--  INSERIRE QUI L'EVENTUALE FORM DI ORDINAMENTO -->
                     </div>
                 </div>
