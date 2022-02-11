@@ -3,12 +3,14 @@ function invitaButtonClicked() {
 }
 
 function showUsersByRole(role, id) {
+  console.log('onchange')
   if (role == '') {
     return
   } else {
     let xmlhttp = new XMLHttpRequest()
     xmlhttp.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
+        console.log('request OK')
         document.getElementById('usersTable').innerHTML = this.responseText
       }
     }

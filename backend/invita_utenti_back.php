@@ -2,6 +2,8 @@
 
 require_once 'mysql_connect_back.php';
 $error_occured = false;
+var_dump($_POST['checkbox']);
+print_r($_POST['checkbox']);
 
 for ($i = 0; $i < sizeof($_POST['checkbox']) && !$error_occured; $i++) {
     $query =

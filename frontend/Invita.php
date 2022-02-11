@@ -12,26 +12,7 @@ require '../common/head.html';
     <?php $_SESSION['user_data']['ruolo'] == 'direttore'
         ? require '../common/sidebar admin.php'
         : require '../common/sidebar user.php'; ?>
-    <script>
-        function showUsersByRole(role, id) {
-            if (role == '') {
-                return
-            } else {
-                let xmlhttp = new XMLHttpRequest()
-                xmlhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById('usersTable').innerHTML = this.responseText
-                }
-                }
-                xmlhttp.open(
-                'GET',
-                '../backend/utenti_filtro_ruoli.php?q=' + role + '&id=' + id,
-                true,
-                )
-                xmlhttp.send()
-            }
-        }
-    </script>
+    <script src="../js/invita_utenti.js"></script>
 
     <div id="layoutSidenav_content">
         <main>
@@ -78,9 +59,8 @@ require '../common/head.html';
                                 <th scope="col">Ruolo</th>
                             </tr>
                             </thead>
-                            <form id="guests_form" action="../backend/invita_utenti_back.php?id=<?php echo $_GET[
-                                'id'
-                            ]; ?>" method="POST">
+                            <form id="guests_form" action="../backend/invita_utenti_back.php?id=
+                            <?php echo $_GET['id']; ?>" method="POST">
                                 <tbody id="usersTable">
                                     <?php
                                     $id_riunione = $_GET['id'];
@@ -100,6 +80,6 @@ require '../common/head.html';
 <script src="../js/scripts.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 <script src="../js/datatables-simple-demo.js"></script>
-<script src="../js/invita_utenti.js"></script>
+<script type="text/javascript" src="../js/invita_utenti.js"></script>
 </body>
 </html>
