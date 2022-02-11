@@ -1,11 +1,14 @@
 <?php
 
+session_start();
 require_once 'mysql_connect_back.php';
 
 $query =
     'SELECT * FROM persona WHERE persona.email NOT IN (SELECT invito.persona FROM invito WHERE invito.id_riunione=' .
     $id_riunione .
-    ');';
+    ') AND persona.email != \'' .
+    $_SESSION['user_data']['email'] .
+    '\';';
 $utenti = @mysqli_query($dbc, $query);
 
 while ($row = mysqli_fetch_array($utenti)) {

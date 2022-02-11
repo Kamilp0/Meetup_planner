@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 require_once 'mysql_connect_back.php';
 
 $query =
@@ -6,7 +9,9 @@ $query =
     $_GET['q'] .
     '\' AND persona.email NOT IN (SELECT invito.persona FROM invito WHERE invito.id_riunione=' .
     $_GET['id'] .
-    ');';
+    ') AND persona.email != \'' .
+    $_SESSION['user_data']['email'] .
+    '\';';
 
 $res = $dbc->query($query);
 

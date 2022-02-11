@@ -35,10 +35,11 @@ require '../common/head.html';
                         } ?>
                         <div class="row justify-content-md-center">
                             <form>
+                                <label for="ruolo">Invita per ruolo:</label>
                                 <select name="ruolo" onchange="showUsersByRole(this.value, <?php echo $_GET[
                                     'id'
                                 ]; ?>)">
-                                    <option value="">Seleziona per ruolo:</option>
+                                    <option value="">Ruolo</option>
                                     <?php require '../backend/lista_ruoli_back.php'; ?>
                                 </select>
                             </form>
