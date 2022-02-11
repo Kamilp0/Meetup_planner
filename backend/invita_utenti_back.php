@@ -1,6 +1,7 @@
 <?php
 
 require_once 'mysql_connect_back.php';
+
 $error_occured = false;
 $id_riunione = $_POST['id'];
 $guests = explode(',', $_POST['checkbox']);

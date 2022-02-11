@@ -12,7 +12,6 @@ require '../common/head.html';
     <?php $_SESSION['user_data']['ruolo'] == 'direttore'
         ? require '../common/sidebar admin.php'
         : require '../common/sidebar user.php'; ?>
-    <!-- <script src="../js/invita_utenti.js"></script> -->
 
     <div id="layoutSidenav_content">
         <main>
