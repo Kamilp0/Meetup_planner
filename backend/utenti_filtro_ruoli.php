@@ -32,7 +32,7 @@ if (!$res) {
             '</td><td>' .
             $row['ruolo'] .
             '</td>
-        <td><input type="checkbox" name="checkbox[]" value="' .
+            <td><input type="checkbox" name="checkbox[]" value="' .
             $row['email'] .
             '"/></td>
         </tr>';

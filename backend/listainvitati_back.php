@@ -8,7 +8,7 @@ $query =
             WHERE invito.id_riunione=' .
     $id_riunione .
     ';';
-//echo $query;
+
 $invitato = @mysqli_query($dbc, $query);
 $count = 0;
 
