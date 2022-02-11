@@ -1,6 +1,5 @@
-function invitaButtonClicked() {
-  document.getElementById('guests_form').submit()
-}
+const submitButton = document.getElementById('submitButton')
+const id_riunione = document.getElementById('id_riunione')
 
 function showUsersByRole(role, id) {
   console.log('onchange')
@@ -22,3 +21,37 @@ function showUsersByRole(role, id) {
     xmlhttp.send()
   }
 }
+
+submitButton.addEventListener('click', () => {
+  console.log('invita button pressed')
+  let checkboxes = document.getElementsByName('checkbox[]')
+  const request = new XMLHttpRequest()
+
+  request.onload = () => {
+    let responseObject = null
+    try {
+      responseObject = JSON.parse(request.responseText)
+    } catch (e) {
+      console.error('Could not parse JSON!')
+    }
+
+    if (responseObject) {
+      if (!responseObject.error) {
+        window.location.href =
+          '../frontend/lista invitati.php?id_riunione=' + id_riunione.value
+      }
+    }
+  }
+
+  let checkedValues = []
+  checkboxes.forEach((v) => {
+    if (v.checked) {
+      checkedValues.push(v.value)
+    }
+  })
+
+  const requestData = `checkbox=${checkedValues}&id=${id_riunione.value}`
+  request.open('post', '../backend/invita_utenti_back.php')
+  request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
+  request.send(requestData)
+})

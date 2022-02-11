@@ -12,7 +12,7 @@ require '../common/head.html';
     <?php $_SESSION['user_data']['ruolo'] == 'direttore'
         ? require '../common/sidebar admin.php'
         : require '../common/sidebar user.php'; ?>
-    <script src="../js/invita_utenti.js"></script>
+    <!-- <script src="../js/invita_utenti.js"></script> -->
 
     <div id="layoutSidenav_content">
         <main>
@@ -26,7 +26,7 @@ require '../common/head.html';
                         <h1 class="mt-4">Invita utenti</h1>
                     </div>
                     <div class="col-3">
-                        <button class="btn btn-primary btn-lg" onclick="invitaButtonClicked()">Invita</button>
+                        <button id="submitButton" class="btn btn-primary btn-lg">Invita</button>
                     </div>
                     <div class="col-5 container-fluid">
                         <?php if (isset($_GET['submit'])) {
@@ -59,15 +59,15 @@ require '../common/head.html';
                                 <th scope="col">Ruolo</th>
                             </tr>
                             </thead>
-                            <form id="guests_form" action="../backend/invita_utenti_back.php?id=
-                            <?php echo $_GET['id']; ?>" method="POST">
+                            <input type="hidden" id="id_riunione" value="<?php echo $_GET[
+                                'id'
+                            ]; ?>">
                                 <tbody id="usersTable">
                                     <?php
                                     $id_riunione = $_GET['id'];
                                     require '../backend/listautenti_back.php';
                                     ?>
                                 </tbody>
-                            </form>
                         </table>
                     </div>
                 </div>
