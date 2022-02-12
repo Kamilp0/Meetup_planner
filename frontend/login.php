@@ -58,7 +58,7 @@
                                 header('Location: ../index.php');
                             } else {
                                 //handle wrong credentials
-                                echo 'Wrong credentials';
+                                echo '<h5 class="text-danger">Credenziali errate</h5>';
                             }
                         }
                         ?>

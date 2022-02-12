@@ -138,7 +138,7 @@ require '../common/navbar sopra.php';
                                         </div>
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="inputPassword" type="password" placeholder="Conferma Password" />
+                                        <input class="form-control" id="inputPassword" type="password" name="password" placeholder="Conferma Password" />
                                         <label for="inputPassword">Conferma password</label>
                                     </div>
                                 </div>

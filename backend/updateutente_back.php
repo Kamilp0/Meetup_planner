@@ -19,42 +19,46 @@
                 </div>
                 <?php
                 if (isset($_POST['update'])) {
-                    require_once 'mysql_connect_back.php';
 
-                    if (isset($_POST['utenteautorizzato'])) {
-                        $admin = 'utentecheautorizza';
-                        $query =
-                            'UPDATE persona SET nome=\'' .
-                            $_POST['nome'] .
-                            '\', cognome=\'' .
-                            $_POST['cognome'] .
-                            '\', dipartimento=\'' .
-                            $_POST['dipartimento'] .
-                            '\', ruolo=\'' .
-                            $_POST['ruolo'] .
-                            '\', data_autorizzazione=NOW(), autorizzato_da=\'' .
-                            $admin .
-                            '\' WHERE email =\'' .
-                            $_POST['email'] .
-                            '\';';
+                    if (hash('sha256', $_POST['password']) != $_SESSION['user_data']['password']){
+                        echo '<h4 class=" alert alert-danger"><strong>Password sbagliata.</strong> operazione non effettuata. Riprova.</h4><a href="../frontend/aggiungi%20sala.php">Indietro</a>';
                     } else {
-                        $query =
-                            'UPDATE persona SET nome=\'' .
-                            $_POST['nome'] .
-                            '\', cognome=\'' .
-                            $_POST['cognome'] .
-                            '\', dipartimento=\'' .
-                            $_POST['dipartimento'] .
-                            '\', ruolo=\'' .
-                            $_POST['ruolo'] .
-                            '\', data_autorizzazione=NULL, autorizzato_da=NULL WHERE email =\'' .
-                            $_POST['email'] .
-                            '\';';
-                    }
-                    echo $query;
-                    //$esito = mysqli_query($dbc, $query);
-                    if ($esito == true) {
-                        echo '
+                        require_once 'mysql_connect_back.php';
+
+                        if (isset($_POST['utenteautorizzato'])) {
+                            $admin = 'utentecheautorizza';
+                            $query =
+                                'UPDATE persona SET nome=\'' .
+                                $_POST['nome'] .
+                                '\', cognome=\'' .
+                                $_POST['cognome'] .
+                                '\', dipartimento=\'' .
+                                $_POST['dipartimento'] .
+                                '\', ruolo=\'' .
+                                $_POST['ruolo'] .
+                                '\', data_autorizzazione=NOW(), autorizzato_da=\'' .
+                                $admin .
+                                '\' WHERE email =\'' .
+                                $_POST['email'] .
+                                '\';';
+                        } else {
+                            $query =
+                                'UPDATE persona SET nome=\'' .
+                                $_POST['nome'] .
+                                '\', cognome=\'' .
+                                $_POST['cognome'] .
+                                '\', dipartimento=\'' .
+                                $_POST['dipartimento'] .
+                                '\', ruolo=\'' .
+                                $_POST['ruolo'] .
+                                '\', data_autorizzazione=NULL, autorizzato_da=NULL WHERE email =\'' .
+                                $_POST['email'] .
+                                '\';';
+                        }
+                        echo $query;
+                        //$esito = mysqli_query($dbc, $query);
+                        if ($esito == true) {
+                            echo '
                                     <h4 class="alert alert-success">
                                         <i class="fas fa-check-circle"></i><strong>  Fatto!</strong> modifica eseguita con successo.
                                     </h4>
@@ -62,17 +66,19 @@
                                         <a class="col-3" href="../frontend/gestione%20utenti.php">torna alla gestione degli utenti</a>
                                         <a class="col-9" href="../index.html">homepage</a>
                                     </div>';
-                    } else {
-                        $ERRORI = mysqli_error($dbc);
-                        echo '
+                        } else {
+                            $ERRORI = mysqli_error($dbc);
+                            echo '
                                     <h4 class="alert alert-danger">
                                         <i class="fas fa-exclamation-circle"></i><strong>  C\'è stato un problema:</br></strong>';
-                        echo $ERRORI, '</h4>';
+                            echo $ERRORI, '</h4>';
+                        }
+                        mysqli_close($dbc);
                     }
                 } else {
                     echo 'errore.';
                 }
-                mysqli_close($dbc);
+
                 ?>
 
             </div>

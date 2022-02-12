@@ -14,33 +14,22 @@
             <div class="container-fluid pt-5 px-5">
                 <div class="row justify-content-start mb-4">
                     <div class="col-4">
-                        <h1 class="mt-4">Modifica sala</h1>
+                        <h1 class="mt-4">Modifica password</h1>
                     </div>
                 </div>
                 <?php
-                if (isset($_POST['update'])) {
+                if (isset($_POST['submit'])) {
 
-                    if (hash('sha256', $_POST['password']) != $_SESSION['user_data']['password']){
-                        echo '<h4 class=" alert alert-danger"><strong>Password sbagliata.</strong> operazione non effettuata. Riprova.</h4><a href="../frontend/modifica%20sala.php">Indietro</a>';
-                    } else {
+                    require_once 'funzionikamil_back.php';
+                    $err_pwd = ok_pwd($_POST['pwd_old'], $_POST['pwd_new1'], $_POST['pwd_new2']);
+                    if($err_pwd == -1){
                         require_once 'mysql_connect_back.php';
 
+                        $new_pwd = hash('sha256', $_POST['pwd_new1']);
                         $query =
-                            'UPDATE sala SET capienza=' .
-                            $_POST['capienza'] .
-                            ', tavoli=' .
-                            $_POST['tavoli'] .
-                            ', lavagne=' .
-                            $_POST['lavagne'] .
-                            ', computer=' .
-                            $_POST['computer'] .
-                            ', proiettori=' .
-                            $_POST['proiettori'] .
-                            ' WHERE nome=\'' .
-                            $_POST['nome'] .
-                            '\' AND dipartimento=\'' .
-                            $_POST['dip'] .
-                            '\';';
+                            'UPDATE persona SET password=\'' .
+                            $new_pwd .
+                            '\' WHERE email=\'' . $_SESSION['user_data']['email'] . '\';';
                         //echo $query;
                         $esito = mysqli_query($dbc, $query);
                         if ($esito == true) {
@@ -49,8 +38,7 @@
                                         <i class="fas fa-check-circle"></i><strong>  Fatto!</strong> modifica eseguita con successo.
                                     </h4>
                                     <div class="row">
-                                        <a class="col-3" href="../frontend/gestione%20sale.php">torna alla gestione sale</a>
-                                        <a class="col-9" href="../index.html">homepage</a>
+                                        <a class="col-3" href="../backend/logout_back.php">Nuovo login</a>
                                     </div>';
                         } else {
                             $ERRORI = mysqli_error($dbc);
@@ -60,6 +48,33 @@
                             echo $ERRORI, '</h4>';
                         }
                         mysqli_close($dbc);
+                    } else {
+                        echo '
+                                    <h4 class="alert alert-danger">
+                                        <i class="fas fa-exclamation-circle"></i><strong>  C\'è stato un problema:</br></strong>';
+                        switch($err_pwd){
+                            case 1:
+                                echo 'inserire la password attuale prima di cambiarla</h4>';
+                                break;
+                            case 2:
+                                echo 'confermare la nuova password prima di procedere</h4>';
+                                break;
+                            case 3:
+                                echo 'accesso negato. Password attuale errata</h4>';
+                                break;
+                            case 4:
+                                echo 'scegliere una password diversa da quella attuale</h4>';
+                                break;
+                            case 5:
+                                echo 'le password non coincidono</h4>';
+                                break;
+                            case 6:
+                                echo 'inserire solo caratteri alfanumerici</h4>';
+                                break;
+                            default:
+                                echo 'C\'è stato un problema</h4>';
+                                break;
+                        }
                     }
                 } else {
                     echo 'errore.';

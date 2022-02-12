@@ -58,9 +58,14 @@ $user_data = $_SESSION['user_data'];
                             <div class="p-2 d-flex flex-row justify-content-evenly">
                                 <label for="Cognome" class="col-sm-2 col-form-label" >Password:</label>
                                 <div class="col-sm-10">
-                                    <input type="password" name="password"  class="form-control" value=<?php echo $user_data[
-                                        'password'
-                                    ]; ?>>
+                                    <a href="modifica%20password.php"
+                                    <?PHP
+                                    if ($user_data['password'] == '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8'){
+                                        echo 'class="text-danger"><strong><i class="fas fa-key"></i> MODIFICA PASSWORD (consigliato)</strong></a>';
+                                    } else {
+                                        echo '><strong><i class="fas fa-key"></i> Modifica password</strong></a>';
+                                    }
+                                    ?>
                                 </div>
                             </div>
                             <div class="p-2 d-flex flex-row justify-content-evenly">

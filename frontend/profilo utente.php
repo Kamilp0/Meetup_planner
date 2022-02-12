@@ -58,9 +58,14 @@ $user_data = $_SESSION['user_data'];
                             <div class="p-2 d-flex flex-row justify-content-evenly">
                                 <label for="Cognome" class="col-sm-2 col-form-label" >Password:</label>
                                 <div class="col-sm-10">
-                                    <input type="password" class="form-control" value=<?php echo $user_data[
-                                        'password'
-                                    ]; ?> readonly>
+                                    <a href="modifica%20password.php"
+                                    <?PHP
+                                    if ($user_data['password'] == '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8'){
+                                        echo 'class="text-danger"><strong><i class="fas fa-key"></i> MODIFICA PASSWORD (consigliato)</strong></a>';
+                                    } else {
+                                        echo '><strong><i class="fas fa-key"></i> Modifica password</strong></a>';
+                                    }
+                                    ?>
                                 </div>
                             </div>
                             <div class="p-2 ">
@@ -85,6 +90,7 @@ $user_data = $_SESSION['user_data'];
 
     </div>
 </div>
+<script src="../js/input_check.js"></script>
 <script src="../js/bootstrap.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="../js/scripts.js"></script>

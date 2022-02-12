@@ -68,3 +68,46 @@ function checknomesala(obj){
         document.getElementById("label_nomesala").setAttribute("class", "col-sm-2 col-form-label");
     }
 }
+
+function safepassword(obj){
+    let car = false;
+    let num = false;
+    let min = false;
+    let mai = false;
+
+    if(obj.length>=8){
+        document.getElementById("car").innerHTML = "Almeno 8 caratteri <i class=\"fas fa-check-circle text-success\"></i>";
+        car = true;
+    } else {
+        document.getElementById("car").innerHTML = "Almeno 8 caratteri";
+        car = false;
+    }
+
+    if(/\d/.test(obj) === true){
+        document.getElementById("num").innerHTML = "Almeno un numero <i class=\"fas fa-check-circle text-success\"></i>";
+        num = true;
+    } else {
+        document.getElementById("num").innerHTML = "Almeno un numero";
+        num = false;
+    }
+    if(/[a-z]/.test(obj)){
+        document.getElementById("min").innerHTML = "Almeno una lettera minuscola <i class=\"fas fa-check-circle text-success\"></i>";
+        min = true;
+    } else {
+        document.getElementById("min").innerHTML = "Almeno una lettera minuscola";
+        min = false;
+    }
+    if(/[A-Z]/.test(obj)){
+        document.getElementById("mai").innerHTML = "Almeno una lettera maiuscola <i class=\"fas fa-check-circle text-success\"></i>";
+        mai = true;
+    } else {
+        document.getElementById("mai").innerHTML = "Almeno una lettera maiuscola";
+        mai = false;
+    }
+
+    if (car===true && num===true && min===true && mai===true){
+        document.getElementById("salva").removeAttribute('disabled');
+    } else {
+        document.getElementById("salva").setAttribute('disabled', 'true')
+    }
+}

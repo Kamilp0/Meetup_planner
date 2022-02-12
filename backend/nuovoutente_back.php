@@ -18,6 +18,10 @@
                     </div>
                 </div>
                 <?php if (isset($_POST['submit'])) {
+
+                if (hash('sha256', $_POST['password']) != $_SESSION['user_data']['password']){
+                    echo '<h4 class=" alert alert-danger"><strong>Password sbagliata.</strong> operazione non effettuata. Riprova.</h4><a href="../frontend/aggiungi%20utente.php">Indietro</a>';
+                } else {
                     $missingdata = [];
 
                     if (empty($_POST['nome'])) {
@@ -123,6 +127,7 @@
                             echo $missing, '</br>';
                         }
                         echo '</html>';
+                        }
                     }
                 } ?>
 
