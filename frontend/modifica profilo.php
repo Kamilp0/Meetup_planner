@@ -28,7 +28,7 @@ $user_data = $_SESSION['user_data'];
                         <h1 class="mt-4">Profilo utente</h1>
                     </div>
                 </div>
-                <form action="../backend/modifica_profilo_back.php" method="POST">
+                <form action="../backend/modifica_profilo_back.php" method="POST" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col d-flex flex-column justify-content-evenly">
                             <div class="p-2 d-flex flex-row">
@@ -63,12 +63,24 @@ $user_data = $_SESSION['user_data'];
                                     ]; ?>>
                                 </div>
                             </div>
+                            <div class="p-2 d-flex flex-row justify-content-evenly">
+                                <label for="user_pic" ><p class="lead">Immagine del profilo:</p></label>
+                                <input type="file" id="user_pic" name="user_pic">
+                            </div>
                             <div class="p-2 ">
-                                <input type="submit" value="Salva" class="btn btn-primary"/>
+                                <input type="submit" value="Salva" class="btn btn-primary" onclick="document.getElementById('image-form').submit()"/>
                             </div>
                         </div>
                         <div class="col">
-                            <img src="../images/utente_default.jpg" width="250" class="rounded mx-auto d-block" alt="...">
+                            <?php
+                            $pic_src = null;
+                            if ($user_data['foto'] == null) {
+                                $pic_src = '../images/utente_default.jpg';
+                            } else {
+                                $pic_src = $user_data['foto'];
+                            }
+                            ?>
+                            <img src="<?php echo $pic_src; ?>" width="250" class="rounded mx-auto d-block" alt="...">
                         </div>
                 </form>
 

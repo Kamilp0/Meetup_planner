@@ -68,13 +68,19 @@ $user_data = $_SESSION['user_data'];
                             </div>
                         </div>
                         <div class="col">
-                            <img src="../images/utente_default.jpg" width="250" class="rounded mx-auto d-block" alt="...">
+                            <?php
+                            $pic_src = null;
+                            if ($user_data['foto'] == null) {
+                                $pic_src = '../images/utente_default.jpg';
+                            } else {
+                                $pic_src = $user_data['foto'];
+                            }
+                            ?>
+                            <img id="profile_pic" src="<?php echo $pic_src; ?>" width="250" class="rounded mx-auto d-block" alt="...">
                         </div>
                 </form>
-
             </div>
         </main>
-
         <?php require '../common/footer.html'; ?>
 
     </div>
