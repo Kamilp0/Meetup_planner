@@ -1,7 +1,7 @@
 <?php
 
 DEFINE('DB_USER', 'root');
-DEFINE('DB_PASSWORD', 'root');
+DEFINE('DB_PASSWORD', '');
 DEFINE('DB_NAME', 'meetupplanner6');
 DEFINE('DB_HOST', 'localhost');
 
