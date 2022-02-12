@@ -1,10 +1,15 @@
 const submitButton = document.getElementById('submitButton')
 const id_riunione = document.getElementById('id_riunione')
 
+function showUsersDefault(id) {
+  console.log('show user default, id:', id)
+  window.location.href = '../frontend/invita.php?id=' + id
+}
+
 function showUsersByRole(role, id) {
   console.log('onchange')
   if (role == '') {
-    return
+    showUsersDefault(id)
   } else {
     let xmlhttp = new XMLHttpRequest()
     xmlhttp.onreadystatechange = function () {
@@ -16,6 +21,27 @@ function showUsersByRole(role, id) {
     xmlhttp.open(
       'GET',
       '../backend/utenti_filtro_ruoli.php?q=' + role + '&id=' + id,
+      true,
+    )
+    xmlhttp.send()
+  }
+}
+
+function showUsersByDepartment(dep, id) {
+  console.log('onchange')
+  if (dep == '') {
+    showUsersDefault(id)
+  } else {
+    let xmlhttp = new XMLHttpRequest()
+    xmlhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        console.log('request OK')
+        document.getElementById('usersTable').innerHTML = this.responseText
+      }
+    }
+    xmlhttp.open(
+      'GET',
+      '../backend/utenti_filtro_dipartimento.php?q=' + dep + '&id=' + id,
       true,
     )
     xmlhttp.send()

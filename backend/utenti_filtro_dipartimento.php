@@ -5,7 +5,7 @@ session_start();
 require_once 'mysql_connect_back.php';
 
 $query =
-    'SELECT * FROM persona WHERE ruolo=\'' .
+    'SELECT * FROM persona WHERE dipartimento=\'' .
     $_GET['q'] .
     '\' AND persona.email NOT IN (SELECT invito.persona FROM invito WHERE invito.id_riunione=' .
     $_GET['id'] .

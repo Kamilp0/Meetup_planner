@@ -35,12 +35,21 @@ require '../common/head.html';
                         } ?>
                         <div class="row justify-content-md-center">
                             <form>
-                                <label for="ruolo">Invita per ruolo:</label>
+                                <label style="font-weight: bold;" for="ruolo">Invita per</label>
                                 <select name="ruolo" onchange="showUsersByRole(this.value, <?php echo $_GET[
                                     'id'
                                 ]; ?>)">
-                                    <option value="">Ruolo</option>
+                                    <option value="">ruolo</option>
                                     <?php require '../backend/lista_ruoli_back.php'; ?>
+                                </select>
+                            </form>
+                            <form style="margin-top: 1em;">
+                                <label style="font-weight: bold;" for="ruolo">Invita per</label>
+                                <select name="ruolo" onchange="showUsersByDepartment(this.value, <?php echo $_GET[
+                                    'id'
+                                ]; ?>)">
+                                    <option value="">dipartimento</option>
+                                    <?php require '../backend/lista_dipartimenti_back.php'; ?>
                                 </select>
                             </form>
                         </div>
