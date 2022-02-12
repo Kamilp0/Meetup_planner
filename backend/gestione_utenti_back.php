@@ -3,6 +3,7 @@
 require_once 'mysql_connect_back.php';
 $query = "SELECT nome, cognome, data_nascita, email, dipartimento, ruolo, data_autorizzazione FROM persona ORDER BY {$ordine}";
 $utenti = @mysqli_query($dbc, $query);
+$count = 0;
 
 while ($row = mysqli_fetch_array($utenti)) {
     $count++;
@@ -41,21 +42,20 @@ while ($row = mysqli_fetch_array($utenti)) {
             <h5 class="modal-title" id="exampleModalLabel">Autenticazione</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-            <div class="form-floating mb-3">
-                <input class="form-control" id="inputPassword" type="password" placeholder="Conferma Password" />
-                <label for="inputPassword">Conferma password</label>
-            </div>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
-            <a type="submit" href="../backend/deleteutente_back.php?user=' .
+        <form action="../backend/deleteutente_back.php?user=' .
         $row['email'] .
-        '" class="btn btn-danger">ELIMINA UTENTE</a>
+        '" method="post">
+                        <div class="modal-body">
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="inputPassword" type="password" name="password" placeholder="Conferma Password" />
+                                <label for="inputPassword">Conferma password</label>
+                            </div>
+                        </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                        <button type="submit" class="btn btn-danger">ELIMINA UTENTE</button>
                     </div>
-                </div>
-            </div>
-        </div>';
+                </form>';
 }
 
 ?>

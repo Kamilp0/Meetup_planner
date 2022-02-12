@@ -14,20 +14,24 @@
             <div class="container-fluid pt-5 px-5">
                 <div class="row justify-content-start mb-4">
                     <div class="col-4">
-                        <h1 class="mt-4">Elimina sala</h1>
+                        <h1 class="mt-4">Elimina utente</h1>
                     </div>
                 </div>
                 <?php
-                require_once 'mysql_connect_back.php';
 
-                $query =
-                    'DELETE FROM persona WHERE email=\'' .
-                    $_GET['user'] .
-                    '\';';
-                //echo $query;
-                $esito = mysqli_query($dbc, $query);
-                if ($esito == true) {
-                    echo '
+                if (hash('sha256', $_POST['password']) != $_SESSION['user_data']['password']){
+                    echo '<h4 class=" alert alert-danger"><strong>Password sbagliata.</strong> operazione non effettuata. Riprova.</h4><a href="../frontend/gestione%20utenti.php">Indietro</a>';
+                } else {
+                    require_once 'mysql_connect_back.php';
+
+                    $query =
+                        'DELETE FROM persona WHERE email=\'' .
+                        $_GET['user'] .
+                        '\';';
+                    //echo $query;
+                    $esito = mysqli_query($dbc, $query);
+                    if ($esito == true) {
+                        echo '
                                     <h4 class="alert alert-success">
                                         <i class="fas fa-check-circle"></i><strong>  Fatto!</strong> modifica eseguita con successo.
                                     </h4>
@@ -35,14 +39,15 @@
                                         <a class="col-3" href="../frontend/gestione%20utenti.php">torna alla gestione utenti</a>
                                         <a class="col-9" href="../index.php">homepage</a>
                                     </div>';
-                } else {
-                    $ERRORI = mysqli_error($dbc);
-                    echo '
+                    } else {
+                        $ERRORI = mysqli_error($dbc);
+                        echo '
                                     <h4 class="alert alert-danger">
                                         <i class="fas fa-exclamation-circle"></i><strong>  C\'è stato un problema:</br></strong>';
-                    echo $ERRORI, '</h4>';
+                        echo $ERRORI, '</h4>';
+                    }
+                    mysqli_close($dbc);
                 }
-                mysqli_close($dbc);
                 ?>
 
             </div>

@@ -12,10 +12,9 @@
     session_start();
 
     $email = $_POST['email'];
-    $password = $_POST['password'];
+    $password = hash('sha256', $_POST['password']);
     $user_exist = false;
     $user_email = '';
-
     $query = 'SELECT * FROM persona';
     $res = $dbc->query($query);
 
@@ -23,10 +22,13 @@
         echo 'query error';
     } else {
         $row = $res->fetch_assoc();
-        while ($row && !$user_exist) {
-            if ($row['email'] == $email && $row['password'] == $password) {
-                $user_exist = true;
-                $_SESSION['user_data'] = $row;
+        while ($row) {
+            if ($row['email'] == $email) {
+                if ($row['password'] == $password){
+                    $user_exist = true;
+                    $_SESSION['user_data'] = $row;
+                    break;
+                }
             }
             $row = $res->fetch_assoc();
         }

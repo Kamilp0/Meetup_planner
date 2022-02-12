@@ -60,20 +60,22 @@ while ($row = mysqli_fetch_array($sale)) {
                     <h5 class="modal-title" id="exampleModalLabel">Autenticazione</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <div class="form-floating mb-3">
-                        <input class="form-control" id="inputPassword" type="password" placeholder="Conferma Password" />
-                        <label for="inputPassword">Conferma password</label>
+                <form action="../backend/deletesala_back.php?sala=' .
+                    $row['nome'] .
+                    '&dip=' .
+                    $row['dipartimento'] .
+                    '" method="post">
+                        <div class="modal-body">
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="inputPassword" type="password" name="password" placeholder="Conferma Password" />
+                                <label for="inputPassword">Conferma password</label>
+                            </div>
+                        </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                        <button type="submit" class="btn btn-danger">ELIMINA SALA</button>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
-                    <a type="submit" href="../backend/deletesala_back.php?sala=' .
-        $row['nome'] .
-        '&dip=' .
-        $row['dipartimento'] .
-        '" class="btn btn-danger">ELIMINA SALA</a>
-                </div>
+                </form>
             </div>
         </div>
     </div>';
