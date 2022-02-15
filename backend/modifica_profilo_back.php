@@ -14,7 +14,7 @@ if (
 ) {
     header('Location: ../frontend/profilo utente.php?s=0');
 } else {
-    //CHECK ERRORS! (img too big, ecc...)
+    //check errors? (img too big, ecc...)
     if ($user_pic['size'] == 0) {
         $file_dest = $user_data['foto'];
     } else {

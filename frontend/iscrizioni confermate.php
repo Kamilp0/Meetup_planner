@@ -84,19 +84,26 @@ require '../backend/iscrizioni_confermate_back.php';
                                 $invito['cognome'] .
                                 '</td>
                                 <td>
-                                    <a class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#' . $modal_number . '">Annulla iscrizione</a>
+                                    <a class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#' .
+                                $modal_number .
+                                '">Annulla iscrizione</a>
                                 </td>
-                                    <div class="modal fade" id="' . $modal_number . '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="' .
+                                $modal_number .
+                                '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="exampleModalLabel">Fai sapere perché non parteciperai alla riunione:</h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
-                                                <form action="../backend/annulla_iscrizione_back.php?id=' . $id_riunione . '; ?>&from=1" method="POST">
+                                                <form action="../backend/annulla_iscrizione_back.php?id=' .
+                                $id_riunione .
+                                '&from_confirmed=1" method="POST">
                                                     <div class="modal-body">
                                                         <div class="form-floating mb-3">
-                                                            <input class="form-control" name="motivazione" id="inputText" type="text" placeholder="Motivazione" />
+                                                            <input class="form-control" name="motivazione" id="inputText" type="text" placeholder="Motivazione" 
+                                                            value=""/>
                                                             <label for="inputText">Motivazione</label>
                                                         </div>
                                                         <div class="modal-footer">

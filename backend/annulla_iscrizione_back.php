@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 require 'mysql_connect_back.php';
@@ -14,10 +15,12 @@ $query =
 
 $res = $dbc->query($query);
 if (!$res) {
-    echo 'Errore codice ' . $dbc->errno;
+    echo 'Errore codice ' . $dbc->errno . ' ' . $dbc->error . '<br>';
+    echo 'post motivazione ->' . $_POST['motivazione'] . '<-' . '<br>';
+    echo gettype($_POST['motivazione']);
 } else {
     if ($dbc->affected_rows > 0) {
-        if ($_GET['from']) {
+        if ($_GET['from_confirmed']) {
             header('Location: ../frontend/iscrizioni confermate.php');
         } else {
             header('Location: ../frontend/inviti.php');
