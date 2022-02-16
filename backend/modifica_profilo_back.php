@@ -9,7 +9,6 @@ if (
     $user_data['nome'] == $_POST['name'] &&
     $user_data['cognome'] == $_POST['surname'] &&
     $user_data['email'] == $_POST['email'] &&
-    $user_data['password'] == $_POST['password'] &&
     $user_pic['size'] == 0
 ) {
     header('Location: ../frontend/profilo utente.php?s=0');
@@ -27,36 +26,35 @@ if (
 
     require_once 'mysql_connect_back.php';
 
-    $query =
-        'UPDATE persona SET nome=\'' .
-        $_POST['name'] .
-        '\', cognome=\'' .
-        $_POST['surname'] .
-        '\', email=\'' .
-        $_POST['email'] .
-        '\', foto=\'' .
-        $file_dest .
-        '\', password=\'' .
-        $_POST['password'] .
-        '\' WHERE email =\'' .
-        $user_data['email'] .
-        '\';';
+    $query = 'UPDATE persona SET nome=?, cognome=?, email=?, foto=? WHERE email=?;';
+    $stmt = mysqli_prepare($dbc, $query);
+    mysqli_stmt_bind_param(
+        $stmt,
+        'sssss',
+        $_POST['name'],
+        $_POST['surname'],
+        $_POST['email'],
+        $file_dest,
+        $_SESSION['user_data']['email']
+    );
 
-    $res = $dbc->query($query);
-    if (!$res) {
-        echo 'Errore codice ' . $dbc->errno;
+    mysqli_stmt_execute($stmt);
+
+    if (mysqli_error($dbc) != '') {
+        echo 'Errore: ' . mysqli_error($dbc);
     } else {
         if ($dbc->affected_rows > 0) {
             $user_data['nome'] = $_POST['name'];
             $user_data['cognome'] = $_POST['surname'];
             $user_data['email'] = $_POST['email'];
-            $user_data['password'] = $_POST['password'];
             $user_data['foto'] = $file_dest;
             header('Location: ../frontend/profilo utente.php');
         } else {
             echo 'Error updating';
         }
     }
+    mysqli_stmt_close($stmt);
+    mysqli_close($dbc);
 }
 
 ?>

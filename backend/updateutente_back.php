@@ -26,38 +26,35 @@
                         require_once 'mysql_connect_back.php';
 
                         if (isset($_POST['utenteautorizzato'])) {
-                            $admin = 'utentecheautorizza';
-                            $query =
-                                'UPDATE persona SET nome=\'' .
-                                $_POST['nome'] .
-                                '\', cognome=\'' .
-                                $_POST['cognome'] .
-                                '\', dipartimento=\'' .
-                                $_POST['dipartimento'] .
-                                '\', ruolo=\'' .
-                                $_POST['ruolo'] .
-                                '\', data_autorizzazione=NOW(), autorizzato_da=\'' .
-                                $admin .
-                                '\' WHERE email =\'' .
-                                $_POST['email'] .
-                                '\';';
+                            $query = 'UPDATE persona SET nome=?, cognome=?, dipartimento=?, ruolo=?, data_autorizzazione=NOW(), autorizzato_da=? WHERE email=?;';
+                            $stmt = mysqli_prepare($dbc, $query);
+                            mysqli_stmt_bind_param(
+                                    $stmt,
+                                'ssssss',
+                                $_POST['nome'],
+                                $_POST['cognome'],
+                                $_POST['dipartimento'],
+                                $_POST['ruolo'],
+                                $_SESSION['user_data']['email'],
+                                $_POST['email']
+                            );
                         } else {
-                            $query =
-                                'UPDATE persona SET nome=\'' .
-                                $_POST['nome'] .
-                                '\', cognome=\'' .
-                                $_POST['cognome'] .
-                                '\', dipartimento=\'' .
-                                $_POST['dipartimento'] .
-                                '\', ruolo=\'' .
-                                $_POST['ruolo'] .
-                                '\', data_autorizzazione=NULL, autorizzato_da=NULL WHERE email =\'' .
-                                $_POST['email'] .
-                                '\';';
+                            $query = 'UPDATE persona SET nome=?, cognome=?, dipartimento=?, ruolo=?, data_autorizzazione=NULL, autorizzato_da=NULL  WHERE email=?;';
+                            $stmt = mysqli_prepare($dbc, $query);
+                            mysqli_stmt_bind_param(
+                                $stmt,
+                                'sssss',
+                                $_POST['nome'],
+                                $_POST['cognome'],
+                                $_POST['dipartimento'],
+                                $_POST['ruolo'],
+                                $_POST['email']
+                            );
                         }
-                        echo $query;
-                        //$esito = mysqli_query($dbc, $query);
-                        if ($esito == true) {
+
+                        mysqli_stmt_execute($stmt);
+
+                        if (mysqli_error($dbc) == '') {
                             echo '
                                     <h4 class="alert alert-success">
                                         <i class="fas fa-check-circle"></i><strong>  Fatto!</strong> modifica eseguita con successo.
@@ -73,6 +70,7 @@
                                         <i class="fas fa-exclamation-circle"></i><strong>  C\'è stato un problema:</br></strong>';
                             echo $ERRORI, '</h4>';
                         }
+                        mysqli_stmt_close($stmt);
                         mysqli_close($dbc);
                     }
                 } else {

@@ -14,36 +14,28 @@
             <div class="container-fluid pt-5 px-5">
                 <div class="row justify-content-start mb-4">
                     <div class="col-4">
-                        <h1 class="mt-4">Modifica riunione</h1>
+                        <h1 class="mt-4">Elimina riunione</h1>
                     </div>
                 </div>
                 <?php
-                if (isset($_POST['submit'])) {
+
+                if (hash('sha256', $_POST['password']) != $_SESSION['user_data']['password']){
+                    echo '<h4 class=" alert alert-danger"><strong>Password sbagliata.</strong> operazione non effettuata. Riprova.</h4><a href="../frontend/gestione%20sale.php">Indietro</a>';
+                } else {
                     require_once 'mysql_connect_back.php';
 
-                    $query = 'UPDATE riunione SET dipartimento=?, nome_sala=?, data=?, ora=?, tema=?, durata_ore=? WHERE id_riunione=?;';
-                    $stmt = mysqli_prepare($dbc, $query);
-                    mysqli_stmt_bind_param(
-                        $stmt,
-                        'sssssii',
-                        $_POST['dipartimento'],
-                        $_POST['sala'],
-                        $_POST['data'],
-                        $_POST['ora'],
-                        $_POST['tema'],
-                        $_POST['durata'],
-                        $_POST['id']
-                    );
-
-                    mysqli_stmt_execute($stmt);
-                    if (mysqli_error($dbc) == '') {
+                    $query =
+                        'DELETE FROM riunione WHERE id_riunione='. $_GET['id'] .';';
+                    //echo $query;
+                    $esito = mysqli_query($dbc, $query);
+                    if ($esito == true) {
                         echo '
                                     <h4 class="alert alert-success">
                                         <i class="fas fa-check-circle"></i><strong>  Fatto!</strong> modifica eseguita con successo.
                                     </h4>
                                     <div class="row">
                                         <a class="col-3" href="../frontend/le%20mie%20riunioni.php">torna alle mie riunioni</a>
-                                        <a class="col-9" href="../index.html">homepage</a>
+                                        <a class="col-9" href="../index.php">homepage</a>
                                     </div>';
                     } else {
                         $ERRORI = mysqli_error($dbc);
@@ -52,10 +44,7 @@
                                         <i class="fas fa-exclamation-circle"></i><strong>  C\'è stato un problema:</br></strong>';
                         echo $ERRORI, '</h4>';
                     }
-                    mysqli_stmt_close($stmt);
                     mysqli_close($dbc);
-                } else {
-                    echo 'errore.';
                 }
                 ?>
 

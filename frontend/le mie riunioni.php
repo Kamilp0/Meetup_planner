@@ -40,6 +40,7 @@ require '../backend/lista_riunioni_back.php';
                 if ($riunione == null) {
                     echo '<p class="lead">Non hai organizzato alcuna riunione.</p>';
                 } else {
+                    $count = 0;
                     echo '<div class="card mb-4">
                     <div class="card-body">
                         <table class="table table-hover">
@@ -54,6 +55,8 @@ require '../backend/lista_riunioni_back.php';
                             </thead>
                             <tbody>';
                     while ($riunione) {
+                        $modal_number = 'modal' . $count;
+                        $count++;
                         echo '
                             <tr>
                                 <td>' .
@@ -86,7 +89,34 @@ require '../backend/lista_riunioni_back.php';
                                 $riunione['id_riunione'] .
                                 '" type="button" class="btn btn-primary btn-sm">Modifica informazioni</a>
                                 </td>
-                            </tr>';
+                                <td><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#' .
+                            $modal_number .
+                            '"><i class="fas fa-trash-alt"></i></button></td>
+                            </tr>
+                            <div class="modal fade" id="' .
+                            $modal_number .
+                            '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Autenticazione</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form action="../backend/deleteriunione_back.php?id=' .
+                            $riunione['id_riunione'] .
+                            '" method="post">
+                        <div class="modal-body">
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="inputPassword" type="password" name="password" placeholder="Conferma Password" />
+                                <label for="inputPassword">Conferma password</label>
+                            </div>
+                        </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                        <button type="submit" class="btn btn-danger">ELIMINA RIUNIONE</button>
+                    </div>
+                </form>
+                            ';
 
                         $riunione = $res->fetch_assoc();
                     }
