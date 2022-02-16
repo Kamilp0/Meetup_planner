@@ -40,7 +40,7 @@
             <img <?php if ($datiutente['foto'] == null) {
                 echo 'src="../images/utente_default.jpg"';
             } else {
-                echo 'src="<!--da definire-->"' . $email . '.png"';
+                echo 'src=' . $datiutente['foto'];
             } ?>
                 width="250" class="rounded mx-auto d-block" alt="...">
         </div>
