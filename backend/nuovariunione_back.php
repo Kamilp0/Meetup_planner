@@ -21,8 +21,10 @@ require '../common/head.html';
                     </div>
                 </div>
                 <?php if (isset($_POST['submit'])) {
-
-                    if (hash('sha256', $_POST['password']) != $_SESSION['user_data']['password']){
+                    if (
+                        hash('sha256', $_POST['password']) !=
+                        $_SESSION['user_data']['password']
+                    ) {
                         echo '<h4 class=" alert alert-danger"><strong>Password sbagliata.</strong> operazione non effettuata. Riprova.</h4><a href="../frontend/nuova%20riunione.php">Indietro</a>';
                     } else {
                         $missingdata = [];
@@ -64,27 +66,33 @@ require '../common/head.html';
                         }
 
                         if (empty($missingdata)) {
-
                             //controllo che l'aula non sia occupata all'ora selezionata
-                            require "controllosovrapposizioni_back.php";
+                            require 'controllosovrapposizioni_back.php';
 
-                            if ($riunione_sovrapposta==null){
-
-                                $organizzatore = $_SESSION['user_data']['email'];
+                            if ($riunione_sovrapposta == null) {
+                                $organizzatore =
+                                    $_SESSION['user_data']['email'];
 
                                 //generazione di un id_riunione casuale e unico
                                 $lista_id = [];
-                                require_once "mysql_connect_back.php";
+                                require_once 'mysql_connect_back.php';
                                 $aux_query = @mysqli_query(
                                     $dbc,
                                     'SELECT id_riunione FROM riunione WHERE 1'
                                 );
-                                while ($id_esistente = mysqli_fetch_array($aux_query)) {
+                                while (
+                                    $id_esistente = mysqli_fetch_array(
+                                        $aux_query
+                                    )
+                                ) {
                                     $lista_id[] = $id_esistente;
                                 }
                                 while (1) {
                                     $id_candidato = rand(10000, 99999);
-                                    if (in_array($id_candidato, $lista_id) == false) {
+                                    if (
+                                        in_array($id_candidato, $lista_id) ==
+                                        false
+                                    ) {
                                         break;
                                     }
                                 }
@@ -106,7 +114,9 @@ require '../common/head.html';
                                 );
                                 mysqli_stmt_execute($stmt);
 
-                                $affected_rows = mysqli_stmt_affected_rows($stmt);
+                                $affected_rows = mysqli_stmt_affected_rows(
+                                    $stmt
+                                );
 
                                 if ($affected_rows == 1) {
                                     echo '
@@ -115,7 +125,7 @@ require '../common/head.html';
                                     </h4>
                                     <div class="row">
                                         <a class="col-3" href="../frontend/le%20mie%20riunioni.php">torna alle mie riunioni</a>
-                                        <a class="col-9" href="../index.html">homepage</a>
+                                        <a class="col-9" href="../index.php">homepage</a>
                                     </div>';
                                     mysqli_stmt_close($stmt);
                                     mysqli_close($dbc);
@@ -133,9 +143,12 @@ require '../common/head.html';
                                     <h4 class="alert alert-danger">
                                         <i class="fas fa-exclamation-circle"></i>
                                         <strong>  L\'aula è già occupata all\'orario selezionato:</br></br></strong>
-                                        ' . $riunione_sovrapposta['tema_rs'] . ', di ' . $riunione_sovrapposta['org_rs'] . ' ';
+                                        ' .
+                                    $riunione_sovrapposta['tema_rs'] .
+                                    ', di ' .
+                                    $riunione_sovrapposta['org_rs'] .
+                                    ' ';
                             }
-
                         } else {
                             echo '                                    
                                     <h4 class="alert alert-danger">

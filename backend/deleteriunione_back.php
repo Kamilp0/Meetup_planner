@@ -17,16 +17,18 @@
                         <h1 class="mt-4">Elimina riunione</h1>
                     </div>
                 </div>
-                <?php
-
-                if (hash('sha256', $_POST['password']) != $_SESSION['user_data']['password']){
-                    echo '<h4 class=" alert alert-danger"><strong>Password sbagliata.</strong> operazione non effettuata. Riprova.</h4><a href="../frontend/gestione%20sale.php">Indietro</a>';
+                <?php if (
+                    hash('sha256', $_POST['password']) !=
+                    $_SESSION['user_data']['password']
+                ) {
+                    echo '<h4 class=" alert alert-danger"><strong>Password sbagliata.</strong> operazione non effettuata. Riprova.</h4><a href="../frontend/le mie riunioni.php">Indietro</a>';
                 } else {
                     require_once 'mysql_connect_back.php';
 
                     $query =
-                        'DELETE FROM riunione WHERE id_riunione='. $_GET['id'] .';';
-                    //echo $query;
+                        'DELETE FROM riunione WHERE id_riunione=' .
+                        $_GET['id'] .
+                        ';';
                     $esito = mysqli_query($dbc, $query);
                     if ($esito == true) {
                         echo '
@@ -45,8 +47,7 @@
                         echo $ERRORI, '</h4>';
                     }
                     mysqli_close($dbc);
-                }
-                ?>
+                } ?>
 
             </div>
         </main>

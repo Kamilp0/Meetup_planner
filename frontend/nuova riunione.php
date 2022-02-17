@@ -32,25 +32,25 @@ require '../common/head.html';
                         <legend class="col-form-label col-sm-2 pt-0">Dipartimento:</legend>
                         <div class="col-sm-10">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="dipartimento" id="gridRadios1" value="Copernico" >
+                                <input class="form-check-input" type="radio" name="dipartimento" id="gridRadios1" value="Copernico">
                                 <label class="form-check-label" for="dipartimento">
                                     Copernico
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="dipartimento" id="gridRadios1" value="Galileo">
+                                <input class="form-check-input" type="radio" name="dipartimento" id="gridRadios2" value="Galileo">
                                 <label class="form-check-label" for="dipartimento">
                                     Galileo
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="dipartimento" id="gridRadios1" value="Keplero">
+                                <input class="form-check-input" type="radio" name="dipartimento" id="gridRadios3" value="Keplero">
                                 <label class="form-check-label" for="dipartimento">
                                     Keplero
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="dipartimento" id="gridRadios1" value="Newton">
+                                <input class="form-check-input" type="radio" name="dipartimento" id="gridRadios4" value="Newton">
                                 <label class="form-check-label" for="dipartimento">
                                     Newton
                                 </label>
@@ -59,11 +59,7 @@ require '../common/head.html';
                     </fieldset>
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label" for="nome-sala">Sala:</label>
-                        <select class="col-sm-10" name="sala" id="nome-sala">
-                            <option>Alfa</option>
-                            <option>Beta</option>
-                            <option>Gamma</option>
-                            <option>Delta</option>
+                        <select class="col-sm-10" name="sala" id="sala_select">
                         </select>
                     </div>
                     <div class="row mb-3">
@@ -91,7 +87,7 @@ require '../common/head.html';
                         <div class="col-sm-10">
                             <div class="row">
                                 <div class="col-sm-1">
-                                    <input type="number" class="form-control" name="durata">
+                                    <input type="number" min=0 class="form-control" name="durata">
                                 </div>
                                 <div class="col-sm-11"></div>
                             </div>
@@ -140,5 +136,6 @@ require '../common/head.html';
 <script src="../js/scripts.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 <script src="../js/datatables-simple-demo.js"></script>
+<script src="../js/nomi_sale.js"></script>
 </body>
 </html>

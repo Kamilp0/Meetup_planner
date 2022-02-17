@@ -67,6 +67,8 @@ require '../backend/lista_riunioni_back.php';
                             '</td>
                                 <td>' .
                             $riunione['nome_sala'] .
+                            ', ' .
+                            $riunione['dipartimento'] .
                             '</td>
                                 <td>' .
                             $riunione['durata_ore'] .
@@ -86,8 +88,8 @@ require '../backend/lista_riunioni_back.php';
                                 </form>
                                 </td>
                                 <td><a href="modifica%20riunione.php?id=' .
-                                $riunione['id_riunione'] .
-                                '" type="button" class="btn btn-primary btn-sm">Modifica informazioni</a>
+                            $riunione['id_riunione'] .
+                            '" type="button" class="btn btn-primary btn-sm">Modifica informazioni</a>
                                 </td>
                                 <td><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#' .
                             $modal_number .
@@ -96,13 +98,13 @@ require '../backend/lista_riunioni_back.php';
                             <div class="modal fade" id="' .
                             $modal_number .
                             '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Autenticazione</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <form action="../backend/deleteriunione_back.php?id=' .
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Autenticazione</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                        <form action="../backend/deleteriunione_back.php?id=' .
                             $riunione['id_riunione'] .
                             '" method="post">
                         <div class="modal-body">
@@ -115,8 +117,7 @@ require '../backend/lista_riunioni_back.php';
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
                         <button type="submit" class="btn btn-danger">ELIMINA RIUNIONE</button>
                     </div>
-                </form>
-                            ';
+                </form>';
 
                         $riunione = $res->fetch_assoc();
                     }
@@ -166,6 +167,8 @@ require '../backend/lista_riunioni_back.php';
                             '</td>
                                 <td>' .
                             $riunione_svolta['nome_sala'] .
+                            ', ' .
+                            $riunione_svolta['dipartimento'] .
                             '</td>
                                 <td>' .
                             $riunione_svolta['durata_ore'] .
