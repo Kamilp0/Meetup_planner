@@ -1,12 +1,11 @@
 const roomsSelect = document.getElementById('sala_select')
 const formChecks = document.getElementsByClassName('form-check-input')
 const formChecksArr = [].slice.call(formChecks)
-let department = ''
 
 formChecksArr.forEach((checkInput) => {
   checkInput.addEventListener('click', () => {
     roomsSelect.textContent = ''
-    department = checkInput.value
+    let department = checkInput.value
 
     const request = new XMLHttpRequest()
 
